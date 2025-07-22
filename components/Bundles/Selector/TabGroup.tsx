@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TabService from './TabService'
 import { CategoryType } from '@/lib/storage/services/types'
 
@@ -16,6 +16,10 @@ const TabGroup = ({ categories, onChange }: TabGroupProps) => {
         setSelected(categoryId)
         onChange(categoryId)
     }
+
+    useEffect(() => {
+        onTabSelected(categories[0].id)
+    }, [])
 
     return (
         <section className="carousel carousel-center my-3 px-0 bg-base-300 inset-shadow-sm rounded-xl w-full space-x-3">

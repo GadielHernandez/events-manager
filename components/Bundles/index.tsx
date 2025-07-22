@@ -17,11 +17,6 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
     const [category, setCategory] = useState<CategoryType>(categories[0])
     const [bundles, setBundles] = useState<BundleType[]>([])
 
-    useEffect(() => {
-        setCart(new Cart())
-    }, [])
-    if (!cart) return null
-
     const onCategorySelected = async (categoryId: string) => {
         setBundles([])
 
@@ -31,6 +26,12 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
         const bundles = await Category.getBundles(categoryId)
         setBundles(bundles)
     }
+
+    useEffect(() => {
+        setCart(new Cart())
+        onCategorySelected(categories[0].id)
+    }, [])
+    if (!cart) return null
 
     return (
         <>
