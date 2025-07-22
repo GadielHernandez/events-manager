@@ -6,6 +6,7 @@ import './globals.css'
 
 const InterFont = Inter({
     variable: '--font-inter',
+    subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
