@@ -1,0 +1,44 @@
+{
+    "list": [
+        {
+            "id": "SOUNDILUM",
+            "name": "Audio, DJ, Iluminación"
+        },
+        {
+            "id": "EFFECTS",
+            "name": "Efectos especiales"
+        },
+        {
+            "id": "CARPET",
+            "name": "Alfombra roja"
+        },
+        {
+            "id": "PHOTO",
+            "name": "Fotografía y video"
+        },
+        {
+            "id": "ANIMATION",
+            "name": "Animación"
+        },
+        {
+            "id": "LED",
+            "name": "Pantallas y banners LED"
+        },
+        {
+            "id": "CABS",
+            "name": "Fotocabinas"
+        },
+        {
+            "id": "ILUM",
+            "name": "Iluminación"
+        },
+        {
+            "id": "PARTY",
+            "name": "En tu pista"
+        },
+        {
+            "id": "DANCE",
+            "name": "Ensayos personalizados"
+        }
+    ]
+}

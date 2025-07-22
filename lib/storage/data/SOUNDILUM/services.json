@@ -1,0 +1,86 @@
+[
+    {
+        "id": "S001",
+        "name": "5 horas de servicio",
+        "details": "",
+        "category": "SOUNDILUM",
+        "bundles": ["P1", "P2", "P3", "P4"]
+    },
+    {
+        "id": "S002",
+        "name": "Sistema de audio profesional",
+        "details": "",
+        "category": "SOUNDILUM",
+        "bundles": ["P1", "P2", "P3", "P4"]
+    },
+    {
+        "id": "S003",
+        "name": "Dj tocando en vivo",
+        "details": "música",
+        "category": "SOUNDILUM",
+        "bundles": ["P1", "P2", "P3", "P4"]
+    },
+    {
+        "id": "S004",
+        "name": "Lj mezclando en vivo",
+        "details": "SOUNDILUMinación",
+        "category": "SOUNDILUM",
+        "bundles": ["P1", "P2", "P3", "P4"]
+    },
+    {
+        "id": "S005",
+        "name": "Cabezas móviles e SOUNDILUMinación LED",
+        "details": "",
+        "category": "SOUNDILUM",
+        "bundles": ["P1", "P2", "P3", "P4"]
+    },
+    {
+        "id": "S006",
+        "name": "Presentador",
+        "details": "",
+        "category": "SOUNDILUM",
+        "bundles": ["P1", "P2", "P3", "P4"]
+    },
+    {
+        "id": "S007",
+        "name": "Niebla Ambiental",
+        "details": "",
+        "category": "SOUNDILUM",
+        "bundles": ["P1", "P2", "P3", "P4"]
+    },
+    {
+        "id": "S008",
+        "name": "Accesorios para ambiente",
+        "details": "globos, collares hawaianos y pulseras neón",
+        "category": "SOUNDILUM",
+        "bundles": ["P1", "P2", "P3", "P4"]
+    },
+    {
+        "id": "S009",
+        "name": "Pantalla LED de 3×2 metros",
+        "details": "",
+        "category": "SOUNDILUM",
+        "bundles": ["P1", "P2", "P3", "P4"]
+    },
+    {
+        "id": "S010",
+        "name": "Show Party de 45 minutos con Alex Merla.",
+        "details": "",
+        "category": "SOUNDILUM",
+        "bundles": ["P2", "P3", "P4"]
+    },
+    {
+        "id": "S011",
+        "name": "1 servicio extra a elegir entre los siguientes:",
+        "details": "da clic para ver",
+        "category": "SOUNDILUM",
+        "bundles": ["P3", "P4"]
+    },
+    {
+        "id": "S012",
+        "name": "1 servicio premium a elegir entre los siguientes:",
+        "details": "da clic para ver",
+        "category": "SOUNDILUM",
+        "bundles": ["P4"]
+    }
+]

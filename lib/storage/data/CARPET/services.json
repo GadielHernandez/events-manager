@@ -1,0 +1,51 @@
+[
+    {
+        "id": "C001",
+        "name": "Alfombra rosa o roja",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["P1", "P2", "P3"]
+    },
+    {
+        "id": "C002",
+        "name": "Banner gigante con el logo de nuestra marca",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["P1", "P2", "P3"]
+    },
+    {
+        "id": "C003",
+        "name": "Unifilas elegantes doradas con su cordón rojo",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["P1", "P2", "P3"]
+    },
+    {
+        "id": "C004",
+        "name": "Fotografo profesional",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["P1", "P2", "P3"]
+    },
+    {
+        "id": "C005",
+        "name": "Conductor entrevistador",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["P2", "P3"]
+    },
+    {
+        "id": "C006",
+        "name": "Camarografo para capturar cada detalle",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["P2", "P3"]
+    },
+    {
+        "id": "C007",
+        "name": "Backstage exclusivo de tu evento",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["P3"]
+    }
+]

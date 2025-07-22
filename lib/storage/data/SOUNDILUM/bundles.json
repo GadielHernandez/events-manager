@@ -1,0 +1,26 @@
+[
+    {
+        "id": "P1",
+        "name": "Paquete Básico",
+        "description": "El mejor servicio de iluminación y sonido",
+        "price": 200.0
+    },
+    {
+        "id": "P2",
+        "name": "Paquete 1",
+        "description": "Show Party de 45 minutos con Alex Merla.",
+        "price": 250.0
+    },
+    {
+        "id": "P3",
+        "name": "Paquete 2",
+        "description": "Show Party + servicio extra a elegir",
+        "price": 300.0
+    },
+    {
+        "id": "P4",
+        "name": "Paquete 3",
+        "description": "Show Party + servicio extra + servicio premium",
+        "price": 350.0
+    }
+]
