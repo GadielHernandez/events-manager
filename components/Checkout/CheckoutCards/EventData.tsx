@@ -2,7 +2,6 @@ import React from 'react'
 import BaseCard from './BaseCard'
 import InputField from '@/components/Common/DataInput/InputField'
 import FormElement from '@/components/Common/Form/FormElement'
-import { MapPinIcon } from '@heroicons/react/16/solid'
 
 const EventData = () => {
     return (

@@ -1,6 +1,5 @@
 import React from 'react'
 import Title from '@/components/Common/Typography/Title'
-import Grid from '@/components/Common/Grid'
 import ListSelected from '@/components/Checkout/ListSelected'
 import CheckoutCards from '@/components/Checkout/CheckoutCards'
 import AcceptButton from '@/components/Checkout/AcceptButton'

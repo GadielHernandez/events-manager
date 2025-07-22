@@ -4,7 +4,7 @@ import ListItem from './ListItem'
 import Card from '@/components/Common/Card'
 import Cart, { CartItem } from '@/lib/storage/Cart'
 
-const index = () => {
+const ListSelected = () => {
     const currency = new Intl.NumberFormat('es-MX', {
         style: 'currency',
         currency: 'MXN',
@@ -54,4 +54,4 @@ const index = () => {
     )
 }
 
-export default index
+export default ListSelected

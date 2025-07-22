@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FormEvent, useState } from 'react'
+import React, { useState } from 'react'
 import TabService from './TabService'
 import { CategoryType } from '@/lib/storage/services/types'
 

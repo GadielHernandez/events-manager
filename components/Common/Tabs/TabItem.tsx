@@ -11,7 +11,6 @@ const TabItem = ({
     title,
     className,
     children,
-    defaultChecked,
     ...htmlProps
 }: TabItemProps) => {
     return (

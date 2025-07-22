@@ -2,7 +2,6 @@ import React from 'react'
 import BaseCard from './BaseCard'
 import InputField from '@/components/Common/DataInput/InputField'
 import FormElement from '@/components/Common/Form/FormElement'
-import { AtSymbolIcon } from '@heroicons/react/20/solid'
 
 const ClientData = () => {
     return (

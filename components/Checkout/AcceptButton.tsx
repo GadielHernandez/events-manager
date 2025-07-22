@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import { createContract } from '@/lib/pdf/generation'
-import Paragraph from '../Common/Typography/Paragraph'
 
 const AcceptButton = () => {
     const onClick = async () => {
