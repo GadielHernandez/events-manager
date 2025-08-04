@@ -7,19 +7,16 @@ import { CategoryType } from '@/lib/storage/services/types'
 type TabGroupProps = {
     categories: CategoryType[]
     onChange: (categoryId: string) => void
+    initial: string | undefined
 }
 
-const TabGroup = ({ categories, onChange }: TabGroupProps) => {
-    const [selected, setSelected] = useState('S01')
+const TabGroup = ({ categories, onChange, initial }: TabGroupProps) => {
+    const [selected, setSelected] = useState(initial)
 
     const onTabSelected = (categoryId: string) => {
         setSelected(categoryId)
         onChange(categoryId)
     }
-
-    useEffect(() => {
-        onTabSelected(categories[0].id)
-    }, [])
 
     return (
         <section className="carousel carousel-center my-3 px-0 bg-base-300 inset-shadow-sm rounded-xl w-full space-x-3">

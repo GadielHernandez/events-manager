@@ -12,8 +12,11 @@ type BundleCardProps = {
     subtitle: string
     price: number
     category: string
+    categoryId: string
     services: ServiceType[]
+    disabled?: boolean
     cart: Cart
+    change?: (selectedId: string | null) => void
 }
 
 const BundleCard = ({
@@ -21,9 +24,12 @@ const BundleCard = ({
     title,
     price,
     category,
+    categoryId,
     services,
     subtitle,
+    disabled = false,
     cart,
+    change,
 }: BundleCardProps) => {
     const currency = new Intl.NumberFormat('es-MX', {
         style: 'currency',
@@ -37,8 +43,11 @@ const BundleCard = ({
                 name: title,
                 price,
                 category,
+                categoryId,
             })
         else cart.removeItem(id)
+
+        if (change) change(selected ? id : null)
     }
 
     return (
@@ -59,6 +68,7 @@ const BundleCard = ({
             <SelectButton
                 onSelect={onSelectItem}
                 initialStatus={cart.getItem(id) !== undefined}
+                disabled={disabled}
             />
             <ul className="list">
                 {services.map((service, index) => (

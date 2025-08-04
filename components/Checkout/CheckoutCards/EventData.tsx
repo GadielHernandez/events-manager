@@ -1,15 +1,22 @@
 import React from 'react'
 import BaseCard from './BaseCard'
 import InputField from '@/components/Common/DataInput/InputField'
+import SelectInput from '@/components/Common/DataInput/SelectInput'
 import FormElement from '@/components/Common/Form/FormElement'
+import { EVENT_TYPES } from '@/lib/types'
 
 const EventData = () => {
+    const typesKeyValue = Object.entries(EVENT_TYPES).map(([key, value]) => ({
+        value: key,
+        text: value,
+    }))
     return (
         <BaseCard title="Datos del evento">
-            <InputField
-                legend="Tipo de evento"
+            <SelectInput
                 name="EventType"
-                required={true}
+                items={typesKeyValue}
+                legend="Tipo:"
+                label="Selecciona un evento"
             />
 
             <div className="divider"></div>

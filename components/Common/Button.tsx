@@ -10,6 +10,7 @@ type ButtonColor =
     | 'success'
     | 'warning'
     | 'error'
+    | 'primary-content'
 
 type ButtonStyle = 'outline' | 'dash' | 'soft' | 'ghost' | 'link'
 type ButtonBehaivor = 'active' | 'disabled'

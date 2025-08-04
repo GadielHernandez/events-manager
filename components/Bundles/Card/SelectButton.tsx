@@ -5,10 +5,15 @@ import Button from '@/components/Common/Button'
 
 type SelectButtonProps = {
     onSelect: (selected: boolean) => void
+    disabled: boolean
     initialStatus: boolean
 }
 
-const SelectButton = ({ onSelect, initialStatus }: SelectButtonProps) => {
+const SelectButton = ({
+    onSelect,
+    initialStatus,
+    disabled,
+}: SelectButtonProps) => {
     const [selected, setSelected] = useState(initialStatus)
 
     const onItemSelected = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -28,7 +33,8 @@ const SelectButton = ({ onSelect, initialStatus }: SelectButtonProps) => {
     const selectedClasses = 'outline-2 outline-primary'
     return (
         <Button
-            color={selected ? 'neutral' : 'primary'}
+            disabled={disabled}
+            color={selected ? 'primary-content' : 'primary'}
             modifier="block"
             className={`my-3 ${selected && selectedClasses}`}
             onClick={onItemSelected}

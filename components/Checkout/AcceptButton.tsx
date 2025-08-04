@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { createContract } from '@/lib/pdf/generation'
+import Google from '@/lib/api/Google'
 
 const AcceptButton = () => {
     const onClick = async () => {
@@ -12,6 +13,7 @@ const AcceptButton = () => {
 
         inputs.forEach((input) => {
             const el = input as HTMLInputElement
+
             const name = el.name
             const value = el.value
             const isRequired = el.required
@@ -23,8 +25,35 @@ const AcceptButton = () => {
             }
             formData[name] = value
         })
+        console.log(formData)
 
-        await createContract(formData)
+        //await createContract(formData)}
+        console.log(formData['EventDate'], formData['EventTime'])
+
+        const [year, month, day] = formData['EventDate'].split('-').map(Number)
+        const [hours, minutes] = formData['EventTime'].split(':').map(Number)
+        console.log(
+            year,
+            month - 1,
+            day,
+            parseInt(hours as unknown as string),
+            parseInt(minutes as unknown as string)
+        )
+
+        // Crear el Date usando la zona horaria local del navegador
+        const eventDateTime = new Date(
+            year,
+            month - 1,
+            day,
+            parseInt(hours as unknown as string),
+            parseInt(minutes as unknown as string)
+        )
+        console.log(eventDateTime)
+
+        await Google.createEvent({
+            ...formData,
+            EventDateTime: eventDateTime.toISOString(),
+        })
     }
     return (
         <>

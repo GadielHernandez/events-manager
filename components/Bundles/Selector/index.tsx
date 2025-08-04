@@ -8,11 +8,13 @@ import { CategoryType } from '@/lib/storage/services/types'
 type ServiceSelectorProps = {
     onChangeCategory: (categoryId: string) => void
     categories: CategoryType[]
+    initial: string | undefined
 } & React.HTMLAttributes<HTMLDivElement>
 
 const ServiceSelector = ({
     onChangeCategory,
     categories,
+    initial,
 }: ServiceSelectorProps) => {
     const onChage = (categoryId: string) => {
         onChangeCategory(categoryId)
@@ -25,7 +27,11 @@ const ServiceSelector = ({
                 subtitle="Selecciona los paquetes que deseas contratar"
                 className="my-4"
             />
-            <TabGroup categories={categories} onChange={onChage} />
+            <TabGroup
+                categories={categories}
+                onChange={onChage}
+                initial={initial}
+            />
         </>
     )
 }

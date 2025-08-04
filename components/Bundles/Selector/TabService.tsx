@@ -5,7 +5,7 @@ import React from 'react'
 type TabServiceProps = {
     text: string
     value: string
-    selectedValue: string
+    selectedValue: string | undefined
     onChange: (value: string) => void
 } & React.HtmlHTMLAttributes<HTMLInputElement>
 

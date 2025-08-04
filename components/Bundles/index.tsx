@@ -1,12 +1,13 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, use } from 'react'
 import Card from './Card'
 import ServiceSelector from './Selector'
 import Cart from '@/lib/storage/Cart'
 import { BundleType, CategoryType } from '@/lib/storage/services/types'
 import Category from '@/lib/api/Category'
 import Counter from './Counter'
+import { useSearchParams } from 'next/navigation'
 
 type ContainerBundlesType = {
     categories: CategoryType[]
@@ -16,28 +17,47 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
     const [cart, setCart] = useState<Cart | null>(null)
     const [category, setCategory] = useState<CategoryType>(categories[0])
     const [bundles, setBundles] = useState<BundleType[]>([])
+    const [selectedBundle, setSelectedBundle] = useState<string | null>(null)
+
+    const searchParams = useSearchParams()
+    const initialCategory =
+        categories.find(
+            (category) => category.id === searchParams.get('category')
+        ) || categories[0]
 
     const onCategorySelected = async (categoryId: string) => {
-        setBundles([])
+        const listBundlesSelected = cart?.getItemsCategory(categoryId)
 
-        const category = categories.find((cat) => cat.id === categoryId)
-        setCategory(category || categories[0])
+        if (listBundlesSelected && listBundlesSelected.length > 0)
+            setSelectedBundle(listBundlesSelected[0].id)
+        else setSelectedBundle(null)
 
-        const bundles = await Category.getBundles(categoryId)
-        setBundles(bundles)
+        const selectedCategory = categories.find((cat) => cat.id === categoryId)
+        setCategory(selectedCategory || categories[0])
+
+        const listBundles = await Category.getBundles(categoryId)
+        setBundles(listBundles)
+    }
+
+    const onChangeSelected = (selectedId: string | null) => {
+        setSelectedBundle(selectedId)
     }
 
     useEffect(() => {
         setCart(new Cart())
-        onCategorySelected(categories[0].id)
     }, [])
-    if (!cart) return null
+
+    useEffect(() => {
+        onCategorySelected(initialCategory.id)
+    }, [cart])
+    if (!cart) return
 
     return (
         <>
             <ServiceSelector
                 onChangeCategory={onCategorySelected}
                 categories={categories}
+                initial={initialCategory.id}
             />
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
                 {bundles.map((bundle) => (
@@ -48,8 +68,14 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
                         subtitle={bundle.description}
                         price={bundle.price}
                         category={category.name}
+                        categoryId={category.id}
                         services={bundle.services}
+                        disabled={
+                            selectedBundle !== null &&
+                            selectedBundle !== bundle.id
+                        }
                         cart={cart}
+                        change={onChangeSelected}
                     />
                 ))}
             </div>

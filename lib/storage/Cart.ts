@@ -3,6 +3,7 @@ export type CartItem = {
     name: string
     price: number
     category: string
+    categoryId: string
 }
 
 const STORAGE_KEY = 'cart'
@@ -37,8 +38,6 @@ export default class Cart {
     }
 
     private notifyChange() {
-        console.log('Notify change', this.changeCallbacks.length)
-
         for (const callback of this.changeCallbacks) {
             callback(this.items)
         }
@@ -78,6 +77,12 @@ export default class Cart {
 
     getItems(): CartItem[] {
         return Array.from(this.items.values())
+    }
+
+    getItemsCategory(categoryId: string): CartItem[] {
+        return Array.from(this.items.values()).filter(
+            (item) => item.categoryId === categoryId
+        )
     }
 
     getTotal(): number {
