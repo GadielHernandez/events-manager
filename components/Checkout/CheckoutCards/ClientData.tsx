@@ -30,12 +30,12 @@ const ClientData = () => {
                 />
             </FormElement>
             <FormElement className="grid grid-cols-2 gap-4">
+                <InputField legend="Telefono" name="ClientPhone" />
                 <InputField
-                    legend="Telefono"
-                    name="ClientPhone"
+                    legend="Celular/Whatsapp"
+                    name="ClientMobile"
                     required={true}
                 />
-                <InputField legend="Celular/Whatsapp" name="ClientMobile" />
             </FormElement>
         </BaseCard>
     )
