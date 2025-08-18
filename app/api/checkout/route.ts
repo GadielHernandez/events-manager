@@ -1,6 +1,5 @@
 import { CartItem } from '@/lib/storage/Cart'
 import { getBundleByCategory } from '@/lib/storage/services'
-import { BundleJsonType, BundleType } from '@/lib/storage/services/types'
 import { generateContractImage } from '@/services/contract'
 import {
     addImageLinkToEvent,

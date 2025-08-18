@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import TabService from './TabService'
 import { CategoryType } from '@/lib/storage/services/types'
 

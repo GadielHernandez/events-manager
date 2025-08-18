@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react'
-import { createContract } from '@/lib/pdf/generation'
 import Checkout from '@/lib/api/Checkout'
 
 type AcceptButtonProps = {
