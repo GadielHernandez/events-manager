@@ -1,5 +1,5 @@
 'use client'
-
+import { Suspense } from 'react'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
@@ -34,22 +34,24 @@ export default function CallbackPage() {
     }, [searchParams])
 
     return (
-        <div className="max-w-xl mx-auto py-10 text-center">
-            <h1 className="text-2xl font-bold mb-4">
-                Resultado de autorización
-            </h1>
-            {refreshToken ? (
-                <div>
-                    <p className="mb-2">
-                        Tu <strong>refresh_token</strong> es:
-                    </p>
-                    <pre className="bg-base-200 p-4 rounded text-sm">
-                        {refreshToken}
-                    </pre>
-                </div>
-            ) : (
-                <p>{error || 'Esperando respuesta...'}</p>
-            )}
-        </div>
+        <Suspense fallback="Cargando ...">
+            <div className="max-w-xl mx-auto py-10 text-center">
+                <h1 className="text-2xl font-bold mb-4">
+                    Resultado de autorización
+                </h1>
+                {refreshToken ? (
+                    <div>
+                        <p className="mb-2">
+                            Tu <strong>refresh_token</strong> es:
+                        </p>
+                        <pre className="bg-base-200 p-4 rounded text-sm">
+                            {refreshToken}
+                        </pre>
+                    </div>
+                ) : (
+                    <p>{error || 'Esperando respuesta...'}</p>
+                )}
+            </div>
+        </Suspense>
     )
 }
