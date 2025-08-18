@@ -44,7 +44,6 @@ export async function POST(req: NextRequest) {
         PlaceName,
         bundles: serverBundles,
     })
-    if (!event || !event.id) return NextResponse.json({ error: '' })
 
     const image = await generateContractImage({
         id: String(nFolio),
@@ -62,6 +61,9 @@ export async function POST(req: NextRequest) {
     })
 
     const saved = await saveImageOnDrive(image)
-    const updated = await addImageLinkToEvent(event.id, saved.webViewLink || '')
+    const updated = await addImageLinkToEvent(
+        event.id || '',
+        saved.webViewLink || ''
+    )
     return NextResponse.json(updated)
 }

@@ -83,21 +83,6 @@ export async function createEvent(params: CreateEventParams) {
         )
 
         description += `\n FOLIO: ${nFolio}`
-        console.log({
-            calendarId: 'primary',
-            requestBody: {
-                summary: `[${EventType}]: ${Celebrated}`,
-                description,
-                // colorId,
-                status: 'tentative',
-                start: {
-                    dateTime: startDate.toISOString(),
-                },
-                end: {
-                    dateTime: endDate.toISOString(),
-                },
-            },
-        })
 
         const event = await calendar.events.insert({
             calendarId: 'primary',
@@ -119,6 +104,7 @@ export async function createEvent(params: CreateEventParams) {
     } catch (err) {
         console.error('Error creating event:', err)
         return {
+            id: null,
             error: 'Failed to create event',
         }
     }
