@@ -1,10 +1,16 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { createContract } from '@/lib/pdf/generation'
-import Google from '@/lib/api/Google'
+import Checkout from '@/lib/api/Checkout'
 
-const AcceptButton = () => {
+type AcceptButtonProps = {
+    confirmDialog: string
+}
+
+const AcceptButton = ({ confirmDialog }: AcceptButtonProps) => {
+    const [loading, setLoading] = useState(false)
     const onClick = async () => {
+        setLoading(true)
         const form = document.getElementById('event-data')
         if (!form) return
 
@@ -21,24 +27,14 @@ const AcceptButton = () => {
             if (isRequired && !value.trim()) {
                 el.classList.add('input-error')
                 el.reportValidity?.()
+                setLoading(false)
                 throw new Error('Invalid data')
             }
             formData[name] = value
         })
-        console.log(formData)
-
-        //await createContract(formData)}
-        console.log(formData['EventDate'], formData['EventTime'])
 
         const [year, month, day] = formData['EventDate'].split('-').map(Number)
         const [hours, minutes] = formData['EventTime'].split(':').map(Number)
-        console.log(
-            year,
-            month - 1,
-            day,
-            parseInt(hours as unknown as string),
-            parseInt(minutes as unknown as string)
-        )
 
         // Crear el Date usando la zona horaria local del navegador
         const eventDateTime = new Date(
@@ -48,20 +44,26 @@ const AcceptButton = () => {
             parseInt(hours as unknown as string),
             parseInt(minutes as unknown as string)
         )
-        console.log(eventDateTime)
 
-        await Google.createEvent({
+        await Checkout.createPrecontact({
             ...formData,
             EventDateTime: eventDateTime.toISOString(),
         })
+
+        const dialog = document?.getElementById(
+            confirmDialog
+        ) as HTMLDialogElement
+        dialog.showModal()
+        setLoading(false)
     }
     return (
         <>
             <button
-                className="btn btn-block btn-primary my-4"
+                className="btn btn-block btn-primary my-4 "
                 onClick={onClick}
             >
-                Pre-contratar
+                {loading && <span className="loading loading-spinner"></span>}
+                {loading ? ' Enviando' : 'Pre-contratar'}
             </button>
             <p className="text-center text-sm p-4 pt-0 text-base-content/80">
                 Al crear este pre-contrato, recibiremos tu información y te

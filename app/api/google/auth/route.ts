@@ -10,7 +10,10 @@ const oauth2Client = new google.auth.OAuth2(
 export async function GET() {
     const url = oauth2Client.generateAuthUrl({
         access_type: 'offline',
-        scope: ['https://www.googleapis.com/auth/calendar'],
+        scope: [
+            'https://www.googleapis.com/auth/calendar',
+            'https://www.googleapis.com/auth/drive',
+        ],
         prompt: 'consent',
     })
 

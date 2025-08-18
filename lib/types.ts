@@ -3,7 +3,7 @@ export enum EVENT_TYPES {
     WEDDING = 'Boda',
     BIRTHDAY = 'Cumpleaños',
     GRADUATION = 'Graduación',
-    CHRISTMASS = 'Posada',
+    CHRISTMAS = 'Posada',
     OTHER = 'Otro',
 }
 
@@ -12,6 +12,6 @@ export const EVENT_TYPES_COLORS: Record<EVENT_TYPES, string> = {
     [EVENT_TYPES.WEDDING]: '3',
     [EVENT_TYPES.BIRTHDAY]: '4',
     [EVENT_TYPES.GRADUATION]: '5',
-    [EVENT_TYPES.CHRISTMASS]: '6',
+    [EVENT_TYPES.CHRISTMAS]: '6',
     [EVENT_TYPES.OTHER]: '7',
 }

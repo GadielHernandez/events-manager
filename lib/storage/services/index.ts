@@ -31,6 +31,33 @@ export const getCategories = async () => {
     }
 }
 
+export async function getBundleByCategory(
+    categoryId: string,
+    bundleId: string
+): Promise<BundleType | undefined> {
+    try {
+        // Ruta relativa al archivo JSON
+        const filePath = path.join(
+            process.cwd(),
+            STORAGE_PATH,
+            categoryId,
+            'bundles.json'
+        )
+
+        // Leer archivo como string
+        const fileContent = await fs.readFile(filePath, 'utf-8')
+        const bundles = JSON.parse(fileContent) as BundleJsonType[]
+
+        return bundles.find((bundle) => bundle.id === bundleId)
+    } catch (error) {
+        console.error(
+            `❌ Error leyendo bundles de la categoría ${categoryId}:`,
+            error
+        )
+        return undefined
+    }
+}
+
 export async function getBundlesByCategory(
     categoryId: string
 ): Promise<BundleType[]> {

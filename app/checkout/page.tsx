@@ -3,8 +3,10 @@ import Title from '@/components/Common/Typography/Title'
 import ListSelected from '@/components/Checkout/ListSelected'
 import CheckoutCards from '@/components/Checkout/CheckoutCards'
 import AcceptButton from '@/components/Checkout/AcceptButton'
+import ConfirmDialog from '@/components/Checkout/ConfirmDialog'
 
 const CheckoutPage = () => {
+    const idConfirmDialog = 'confirm-dialog'
     return (
         <div className="">
             <Title
@@ -19,7 +21,8 @@ const CheckoutPage = () => {
                 </section>
                 <section className="">
                     <ListSelected />
-                    <AcceptButton />s
+                    <AcceptButton confirmDialog={idConfirmDialog} />
+                    <ConfirmDialog id={idConfirmDialog} />
                 </section>
             </div>
         </div>

@@ -1,9 +1,13 @@
+import Cart from '../storage/Cart'
+
 class Calendar {
-    async createEvent(body: Record<string, string>) {
+    async createPrecontact(data: Record<string, string>) {
+        const cart = new Cart()
+        const bundles = cart.getItems()
         try {
-            const res = await fetch(`/api/google/events`, {
+            const res = await fetch(`/api/checkout`, {
                 method: 'POST',
-                body: JSON.stringify(body),
+                body: JSON.stringify({ ...data, bundles }),
                 headers: { 'Content-type': 'application/json; charset=UTF-8' },
             })
             if (!res.ok) throw new Error('Error al agendar el evento')
