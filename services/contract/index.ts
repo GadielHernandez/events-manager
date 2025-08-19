@@ -1,6 +1,4 @@
 import { createCanvas, loadImage } from 'canvas'
-import path from 'path'
-import fs from 'fs'
 import { BundleType } from '@/lib/storage/services/types'
 
 type CreateEventParams = {
@@ -39,9 +37,9 @@ export async function generateContractImage(params: CreateEventParams) {
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
 
-    const image = await loadImage(
-        process.cwd() + '/services/contract/contract.jpg'
-    )
+    const IS_PROD = process.env.NODE_ENV === 'production'
+    const BASE_PATH = IS_PROD ? '.next/server' : process.cwd()
+    const image = await loadImage(BASE_PATH + '/services/contract/contract.jpg')
     ctx.drawImage(image, 0, 0, width, height)
 
     //const eventDate = new Date(EventDateTime)

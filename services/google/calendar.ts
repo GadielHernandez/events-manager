@@ -57,7 +57,6 @@ export async function createEvent(params: CreateEventParams) {
         const startDate = new Date(EventDateTime)
         const endDate = new Date(EventDateTime)
         endDate.setHours(endDate.getHours() + EVENT_DURATION)
-        console.log(EVENT_TYPES_COLORS, EventType)
 
         const colorId = EVENT_TYPES_COLORS[EventType as EVENT_TYPES]
         let description = `
