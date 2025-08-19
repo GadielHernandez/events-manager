@@ -1,3 +1,5 @@
+import fs from 'fs/promises'
+import path from 'path'
 import { createCanvas, loadImage } from 'canvas'
 import { BundleType } from '@/lib/storage/services/types'
 
@@ -37,9 +39,12 @@ export async function generateContractImage(params: CreateEventParams) {
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
 
-    const IS_PROD = process.env.NODE_ENV === 'production'
-    const BASE_PATH = IS_PROD ? '.next/server' : process.cwd()
-    const image = await loadImage(BASE_PATH + '/services/contract/contract.jpg')
+    const BASE_PATH = 'services/contract/'
+    const filePath = path.join(process.cwd(), BASE_PATH, 'contract.jpg')
+    const imageBuffer = await fs.readFile(filePath)
+
+    const image = await loadImage(imageBuffer)
+
     ctx.drawImage(image, 0, 0, width, height)
 
     //const eventDate = new Date(EventDateTime)
