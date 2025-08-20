@@ -1,7 +1,6 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { createCanvas, loadImage } from 'canvas'
-import { BundleType } from '@/lib/storage/services/types'
 
 type CreateEventParams = {
     id: string
@@ -15,7 +14,7 @@ type CreateEventParams = {
     EventType: string
     PlaceAddress: string
     PlaceName: string
-    bundles: BundleType[]
+    bundles: any[]
 }
 
 const currency = Intl.NumberFormat('es-MX', {
@@ -103,7 +102,7 @@ export async function generateContractImage(params: CreateEventParams) {
     const lineHeightServices = 45
     bundles.forEach((bundle) => {
         serviceCount++
-        serviceText = `${serviceText} - ${bundle.name}`
+        serviceText = `${serviceText} - ${bundle.name}(${bundle.category})`
         total += bundle.price
 
         if (serviceCount == 3) {

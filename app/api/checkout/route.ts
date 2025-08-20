@@ -24,7 +24,10 @@ export async function POST(req: NextRequest) {
     } = await req.json()
 
     const findBundles = bundles.map((bundle: CartItem) =>
-        getBundleByCategory(bundle.categoryId, bundle.id)
+        getBundleByCategory(bundle.categoryId, bundle.id).then((res) => ({
+            ...res,
+            category: bundle.category,
+        }))
     )
     const serverBundles = await Promise.all(findBundles)
 
