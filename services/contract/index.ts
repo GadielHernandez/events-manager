@@ -18,6 +18,11 @@ type CreateEventParams = {
     bundles: BundleType[]
 }
 
+const currency = Intl.NumberFormat('es-MX', {
+    style: 'currency',
+    currency: 'MXN',
+})
+
 export async function generateContractImage(params: CreateEventParams) {
     const {
         id,
@@ -113,9 +118,10 @@ export async function generateContractImage(params: CreateEventParams) {
 
     ctx.fillText(`${PlaceName}, ${PlaceAddress}`, 347, 881) // Ubicacion
 
-    ctx.fillText(`$${total}`, 867, 1075) // Total
-    ctx.fillText('$0', 867, 1133) // Anticipo
-    ctx.fillText(`$${total}`, 867, 1163) // Resto
+    const CONTRACT_ADVANCE = Number(process.env.CONTRACT_ADVANCE || 3000)
+    ctx.fillText(currency.format(total), 867, 1075) // Total
+    ctx.fillText(currency.format(CONTRACT_ADVANCE), 867, 1133) // Anticipo
+    ctx.fillText(currency.format(total - CONTRACT_ADVANCE), 867, 1163) // Resto
 
     // Exportar como imagen
     const buffer = canvas.toBuffer('image/jpeg')
