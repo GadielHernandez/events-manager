@@ -1,12 +1,9 @@
 import { CartItem } from '@/lib/storage/Cart'
 import { getBundleByCategory } from '@/lib/storage/services'
 import { generateContractImage } from '@/services/contract'
-import {
-    addImageLinkToEvent,
-    createEvent,
-    saveImageOnDrive,
-} from '@/services/google/calendar'
+import { addImageLinkToEvent, createEvent } from '@/services/google/calendar'
 import { NextRequest, NextResponse } from 'next/server'
+import GoogleDrive from '@/services/google/drive'
 
 export async function POST(req: NextRequest) {
     const {
@@ -63,7 +60,7 @@ export async function POST(req: NextRequest) {
         bundles: serverBundles,
     })
 
-    const saved = await saveImageOnDrive(image)
+    const saved = await GoogleDrive.saveImage(image)
     const updated = await addImageLinkToEvent(
         event.id || '',
         saved.webViewLink || ''

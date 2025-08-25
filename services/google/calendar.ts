@@ -1,24 +1,9 @@
-import fs from 'fs'
+import GoogleClient from './index'
 import { EVENT_TYPES, EVENT_TYPES_COLORS } from '@/lib/types'
 import { google } from 'googleapis'
-import { Readable } from 'stream'
 import { BundleType } from '@/lib/storage/services/types'
 
 const EVENT_DURATION = 4
-const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI!
-const CLIENT_ID = process.env.GOOGLE_CLIENT_ID!
-const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!
-const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN! // Este lo obtienes una vez con OAuth
-
-const oauth2Client = new google.auth.OAuth2(
-    CLIENT_ID,
-    CLIENT_SECRET,
-    REDIRECT_URI
-)
-
-oauth2Client.setCredentials({
-    refresh_token: REFRESH_TOKEN,
-})
 
 type CreateEventParams = {
     nFolio: string
@@ -51,7 +36,7 @@ export async function createEvent(params: CreateEventParams) {
         bundles,
     } = params
 
-    const calendar = google.calendar({ version: 'v3', auth: oauth2Client })
+    const calendar = google.calendar({ version: 'v3', auth: GoogleClient.auth })
 
     try {
         const startDate = new Date(EventDateTime)
@@ -109,31 +94,8 @@ export async function createEvent(params: CreateEventParams) {
     }
 }
 
-function bufferToStream(buffer: Buffer) {
-    const stream = new Readable()
-    stream.push(buffer)
-    stream.push(null) // fin del stream
-    return stream
-}
-
-export async function saveImageOnDrive(img: Buffer) {
-    const drive = google.drive({ version: 'v3', auth: oauth2Client })
-    const result = await drive.files.create({
-        requestBody: {
-            name: `Contrato${new Date().toISOString()}`,
-        },
-        media: {
-            mimeType: 'image/jpeg',
-            body: bufferToStream(img),
-        },
-        fields: 'id, webViewLink',
-    })
-
-    return result.data
-}
-
 export async function addImageLinkToEvent(eventId: string, imageLink: string) {
-    const calendar = google.calendar({ version: 'v3', auth: oauth2Client })
+    const calendar = google.calendar({ version: 'v3', auth: GoogleClient.auth })
 
     // Obtener el evento actual
     const { data: event } = await calendar.events.get({
