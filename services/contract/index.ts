@@ -1,6 +1,12 @@
 import fs from 'fs/promises'
 import path from 'path'
-import { createCanvas, loadImage } from 'canvas'
+import { createCanvas, loadImage, registerFont } from 'canvas'
+
+const BASE_PATH = 'services/contract/'
+
+registerFont(path.join(process.cwd(), BASE_PATH, 'OpenSans-Regular.ttf'), {
+    family: 'OpenSans',
+})
 
 type CreateEventParams = {
     contractFolio: string
@@ -43,7 +49,6 @@ export async function generateContractImage(params: CreateEventParams) {
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
 
-    const BASE_PATH = 'services/contract/'
     const filePath = path.join(process.cwd(), BASE_PATH, 'contract.jpg')
     const imageBuffer = await fs.readFile(filePath)
 
@@ -55,7 +60,7 @@ export async function generateContractImage(params: CreateEventParams) {
 
     // Agregar textos
     ctx.fillStyle = 'black'
-    ctx.font = '20px sans-serif'
+    ctx.font = '20px "OpenSans"'
 
     const now = new Date()
     ctx.fillText(
