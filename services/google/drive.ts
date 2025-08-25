@@ -15,15 +15,17 @@ class GoogleDrive {
         return stream
     }
 
-    async saveImage(img: Buffer) {
-        const drive = google.drive({ version: 'v3', auth: GoogleClient.auth })
+    getContractFolio() {
         this.counter++
+        const folio = String(this.counter).padStart(MAX_ID_LEN, '0')
+        return folio
+    }
+
+    async saveImage(img: Buffer, contractFolio: string) {
+        const drive = google.drive({ version: 'v3', auth: GoogleClient.auth })
         const result = await drive.files.create({
             requestBody: {
-                name: `Contrato${String(this.counter).padStart(
-                    MAX_ID_LEN,
-                    '0'
-                )}`,
+                name: `Contrato${contractFolio}`,
                 parents: this.folderId ? [this.folderId] : undefined,
             },
             media: {

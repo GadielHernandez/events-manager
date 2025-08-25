@@ -28,10 +28,9 @@ export async function POST(req: NextRequest) {
     )
     const serverBundles = await Promise.all(findBundles)
 
-    const nFolio = new Date().getTime()
-
+    const contractFolio = GoogleDrive.getContractFolio()
     const event = await createEvent({
-        nFolio: String(nFolio),
+        contractFolio,
         Celebrated,
         ClientAddress,
         ClientEmail,
@@ -46,7 +45,7 @@ export async function POST(req: NextRequest) {
     })
 
     const image = await generateContractImage({
-        id: String(nFolio),
+        contractFolio,
         Celebrated,
         ClientAddress,
         ClientEmail,
@@ -60,7 +59,7 @@ export async function POST(req: NextRequest) {
         bundles: serverBundles,
     })
 
-    const saved = await GoogleDrive.saveImage(image)
+    const saved = await GoogleDrive.saveImage(image, contractFolio)
     const updated = await addImageLinkToEvent(
         event.id || '',
         saved.webViewLink || ''

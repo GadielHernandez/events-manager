@@ -6,7 +6,7 @@ import { BundleType } from '@/lib/storage/services/types'
 const EVENT_DURATION = 4
 
 type CreateEventParams = {
-    nFolio: string
+    contractFolio: string
     Celebrated: string
     ClientAddress: string
     ClientEmail: string
@@ -22,7 +22,7 @@ type CreateEventParams = {
 
 export async function createEvent(params: CreateEventParams) {
     const {
-        nFolio,
+        contractFolio,
         Celebrated,
         ClientAddress,
         ClientEmail,
@@ -66,7 +66,7 @@ export async function createEvent(params: CreateEventParams) {
             (bundle) => (description = `${description} - ${bundle.name} \n`)
         )
 
-        description += `\n FOLIO: ${nFolio}`
+        description += `\n FOLIO: ${contractFolio}`
 
         const event = await calendar.events.insert({
             calendarId: 'primary',

@@ -3,7 +3,7 @@ import path from 'path'
 import { createCanvas, loadImage } from 'canvas'
 
 type CreateEventParams = {
-    id: string
+    contractFolio: string
     Celebrated: string
     ClientAddress: string
     ClientEmail: string
@@ -24,7 +24,7 @@ const currency = Intl.NumberFormat('es-MX', {
 
 export async function generateContractImage(params: CreateEventParams) {
     const {
-        id,
+        contractFolio,
         Celebrated,
         ClientAddress,
         ClientEmail,
@@ -63,7 +63,7 @@ export async function generateContractImage(params: CreateEventParams) {
         20,
         75
     ) // Fecha
-    ctx.fillText(id, 940, 75) // Fecha
+    ctx.fillText(contractFolio, 990, 75) // Fecha
 
     const eventDate = new Date(EventDateTime)
     ctx.fillText(
