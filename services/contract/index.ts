@@ -55,7 +55,7 @@ export async function generateContractImage(params: CreateEventParams) {
 
     // Agregar textos
     ctx.fillStyle = 'black'
-    ctx.font = '20px Arial'
+    ctx.font = '20px sans-serif'
 
     const now = new Date()
     ctx.fillText(
