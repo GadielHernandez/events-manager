@@ -3,6 +3,7 @@ import path from 'path'
 import { createCanvas, loadImage, registerFont } from 'canvas'
 
 const BASE_PATH = 'services/contract/'
+const CONTRACT_ADVANCE = Number(process.env.CONTRACT_ADVANCE || 3000)
 
 registerFont(path.join(process.cwd(), BASE_PATH, 'OpenSans-Regular.ttf'), {
     family: 'OpenSans',
@@ -122,9 +123,13 @@ export async function generateContractImage(params: CreateEventParams) {
 
     ctx.fillText(`${PlaceName}, ${PlaceAddress}`, 347, 881) // Ubicacion
 
-    const CONTRACT_ADVANCE = Number(process.env.CONTRACT_ADVANCE || 3000)
+    let advance =
+        total <= CONTRACT_ADVANCE + CONTRACT_ADVANCE * 0.4
+            ? total * 0.4
+            : CONTRACT_ADVANCE
+
     ctx.fillText(currency.format(total), 867, 1075) // Total
-    ctx.fillText(currency.format(CONTRACT_ADVANCE), 867, 1133) // Anticipo
+    ctx.fillText(currency.format(advance), 867, 1133) // Anticipo
     ctx.fillText(currency.format(total - CONTRACT_ADVANCE), 867, 1163) // Resto
 
     // Exportar como imagen
