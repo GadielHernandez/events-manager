@@ -21,9 +21,9 @@ const sizeLevels: Record<HeadingLevel, string> = {
 }
 
 const weightLevels: Record<HeadingLevel, string> = {
-    h1: 'bold',
-    h2: 'semibold',
-    h3: 'semibold',
+    h1: 'medium',
+    h2: 'medium',
+    h3: 'medium',
     h4: 'medium',
     h5: 'medium',
     h6: 'medium',
@@ -47,11 +47,9 @@ const Title = ({
 
     return (
         <div className={className}>
-            <Tag className={`${classesNames} tracking-tight mb-1`}>{text}</Tag>
+            <Tag className={`${classesNames} tracking-tight`}>{text}</Tag>
             {subtitle && (
-                <p className="ml-1 text-base text-base-content/50 tracking-tight ">
-                    {subtitle}
-                </p>
+                <p className="ml-1 text-base tracking-tight ">{subtitle}</p>
             )}
         </div>
     )

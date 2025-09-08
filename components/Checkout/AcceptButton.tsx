@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Checkout from '@/lib/api/Checkout'
+import Button from '../Common/Button'
 
 type AcceptButtonProps = {
     confirmDialog: string
@@ -57,15 +58,16 @@ const AcceptButton = ({ confirmDialog }: AcceptButtonProps) => {
     }
     return (
         <>
-            <button
-                className="btn btn-block btn-primary my-4 "
+            <Button
+                className="btn-block btn-primary my-4 "
                 onClick={onClick}
+                disabled={loading}
             >
                 {loading && <span className="loading loading-spinner"></span>}
-                {loading ? ' Enviando' : 'Pre-contratar'}
-            </button>
+                {loading ? ' Enviando' : 'Solicitar contrato'}
+            </Button>
             <p className="text-center text-sm p-4 pt-0 text-base-content/80">
-                Al crear este pre-contrato, recibiremos tu información y te
+                Al solicitar tu contrato, recibiremos tu información y te
                 contactaremos en brevedad para confirmar tu{' '}
                 <strong>metodo de pago</strong> y hacer la{' '}
                 <strong>confirmación</strong> de la fecha de tu evento

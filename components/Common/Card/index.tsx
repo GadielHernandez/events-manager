@@ -8,10 +8,10 @@ type CardProps = {
 const Card = ({ children, className, ...htmlProps }: CardProps) => {
     return (
         <article
-            className="card bg-base-100 shadow-sm rounded-xl"
+            className="card bg-base-100 shadow-sm rounded-2xl"
             {...htmlProps}
         >
-            <section className={`card-body ${className}`}>{children}</section>
+            <section className={`card-body p-3`}>{children}</section>
         </article>
     )
 }

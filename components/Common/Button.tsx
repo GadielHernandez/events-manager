@@ -34,7 +34,7 @@ const Button = ({
     ...props
 }: ButtonProps) => {
     const classes = [
-        'rounded-xl',
+        'rounded-full',
         'btn',
         color && `btn-${color}`,
         style && `btn-${style}`,

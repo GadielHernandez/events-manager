@@ -8,7 +8,7 @@ export type CartItem = {
 
 const STORAGE_KEY = 'cart'
 
-export default class Cart {
+class Cart {
     private items: Map<string, CartItem> = new Map()
     private changeCallbacks: Array<(items: Map<string, CartItem>) => void> = []
 
@@ -18,18 +18,18 @@ export default class Cart {
 
     private saveToStorage() {
         const itemsArray = Array.from(this.items.values())
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(itemsArray))
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(itemsArray))
     }
 
     private loadFromStorage() {
-        const data = localStorage.getItem(STORAGE_KEY)
+        const data = window.localStorage.getItem(STORAGE_KEY)
         if (data) {
             try {
                 const items: CartItem[] = JSON.parse(data)
                 this.items = new Map(items.map((item) => [item.id, item]))
             } catch (e) {
                 console.error(
-                    '❌ Error cargando carrito desde localStorage:',
+                    '❌ Error cargando carrito desde window.localStorage:',
                     e
                 )
                 this.items.clear()
@@ -67,7 +67,7 @@ export default class Cart {
 
     clear() {
         this.items.clear()
-        localStorage.removeItem(STORAGE_KEY)
+        window.localStorage.removeItem(STORAGE_KEY)
         this.notifyChange()
     }
 
@@ -93,3 +93,5 @@ export default class Cart {
         return this.getItems()
     }
 }
+
+export default new Cart()

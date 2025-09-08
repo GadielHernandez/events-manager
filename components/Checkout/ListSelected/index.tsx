@@ -14,8 +14,7 @@ const ListSelected = () => {
     const [total, setTotal] = useState<number>(0)
 
     useEffect(() => {
-        const cart = new Cart()
-        const items = cart.getItems()
+        const items = Cart.getItems()
         setItems(items)
 
         const total = items.reduce((sum, item) => {
@@ -33,6 +32,7 @@ const ListSelected = () => {
                 {items?.map((item) => (
                     <ListItem
                         key={item.id}
+                        categoryId={item.categoryId}
                         category={item.category}
                         name={item.name}
                         price={currency.format(item.price)}

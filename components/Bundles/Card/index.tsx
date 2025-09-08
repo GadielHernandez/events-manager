@@ -15,7 +15,7 @@ type BundleCardProps = {
     categoryId: string
     services: ServiceType[]
     disabled?: boolean
-    cart: Cart
+    cart: typeof Cart
     change?: (selectedId: string | null) => void
 }
 

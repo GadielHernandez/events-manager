@@ -5,6 +5,8 @@ export type CategoryList = {
 export type CategoryType = {
     id: string
     name: string
+    description: string
+    img: string
 }
 
 export type ServiceType = {

@@ -2,8 +2,7 @@ import Cart from '../storage/Cart'
 
 class Calendar {
     async createPrecontact(data: Record<string, string>) {
-        const cart = new Cart()
-        const bundles = cart.getItems()
+        const bundles = Cart.getItems()
 
         try {
             const res = await fetch(`/api/checkout`, {

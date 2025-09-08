@@ -29,7 +29,7 @@
     },
     {
         "id": "S005",
-        "name": "Cabezas móviles e SOUNDILUMinación LED",
+        "name": "Cabezas móviles e iluminación LED",
         "details": "",
         "category": "SOUNDILUM",
         "bundles": ["P1", "P2", "P3", "P4"]
@@ -74,13 +74,27 @@
         "name": "1 servicio extra a elegir entre los siguientes:",
         "details": "da clic para ver",
         "category": "SOUNDILUM",
-        "bundles": ["P3", "P4"]
+        "bundles": ["P3", "P4"],
+        "options": [
+            "Banner LED",
+            "3 efectos especiales a tu elección: Vals en las nubes, lluvia metálica, lluvia de mariposas, chisperos o burbujas de humo",
+            "VideoBooth 360° (Cabina 360°) por 2.5 horas",
+            "Cabina Pix (Fotocabina) con servicio por 3 horas",
+            "Insta Pix con 50 fotografías instantáneas",
+            "Alfombra Roja, opción de fotos digitales",
+            "Robot LED Man + 1 Cabezón, servicio con un máximo de 30 minutos de diversión cada uno]"
+        ]
     },
     {
         "id": "S012",
         "name": "1 servicio premium a elegir entre los siguientes:",
         "details": "da clic para ver",
         "category": "SOUNDILUM",
-        "bundles": ["P4"]
+        "bundles": ["P4"],
+        "options": [
+            "2 Banner LED",
+            "Pantalla LED adicional de 3×2 metros",
+            "Pista iluminada Infinity Gold de 24 módulos (4.88 x 7.33 metros)"
+        ]
     }
 ]

@@ -2,31 +2,38 @@
 
 import React, { useState, useEffect } from 'react'
 import Card from './Card'
-import ServiceSelector from './Selector'
 import Cart from '@/lib/storage/Cart'
 import { BundleType, CategoryType } from '@/lib/storage/services/types'
 import Category from '@/lib/api/Category'
-import Counter from './Counter'
 import { useSearchParams } from 'next/navigation'
+import Container from '../Common/Container'
+import Header from '../Common/Header'
+import Paragraph from '../Common/Typography/Paragraph'
+import Title from '../Common/Typography/Title'
+import Footer from '../Footer'
+import Button from '../Common/Button'
+import { ChevronLeftIcon } from '@heroicons/react/24/solid'
+import { useRouter } from 'next/navigation'
 
 type ContainerBundlesType = {
     categories: CategoryType[]
 }
 
 const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
-    const [cart, setCart] = useState<Cart | null>(null)
+    const router = useRouter()
+
     const [category, setCategory] = useState<CategoryType>(categories[0])
     const [bundles, setBundles] = useState<BundleType[]>([])
     const [selectedBundle, setSelectedBundle] = useState<string | null>(null)
 
     const searchParams = useSearchParams()
-    const initialCategory =
+    const selectedCategory =
         categories.find(
             (category) => category.id === searchParams.get('category')
         ) || categories[0]
 
-    const onCategorySelected = async (categoryId: string) => {
-        const listBundlesSelected = cart?.getItemsCategory(categoryId)
+    const setCategorySelected = async (categoryId: string) => {
+        const listBundlesSelected = Cart.getItemsCategory(categoryId)
 
         if (listBundlesSelected && listBundlesSelected.length > 0)
             setSelectedBundle(listBundlesSelected[0].id)
@@ -43,43 +50,68 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
         setSelectedBundle(selectedId)
     }
 
-    useEffect(() => {
-        setCart(new Cart())
-    }, [])
+    const onItemSelected = () => {
+        console.log('hiii')
+    }
 
     useEffect(() => {
-        onCategorySelected(initialCategory.id)
-    }, [cart])
-    if (!cart) return
+        setCategorySelected(selectedCategory.id)
+    }, [])
 
     return (
         <>
-            <ServiceSelector
-                onChangeCategory={onCategorySelected}
-                categories={categories}
-                initial={initialCategory.id}
-            />
-            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
-                {bundles.map((bundle) => (
-                    <Card
-                        id={String(bundle.id)}
-                        key={bundle.id}
-                        title={bundle.name}
-                        subtitle={bundle.description}
-                        price={bundle.price}
-                        category={category.name}
-                        categoryId={category.id}
-                        services={bundle.services}
-                        disabled={
-                            selectedBundle !== null &&
-                            selectedBundle !== bundle.id
-                        }
-                        cart={cart}
-                        change={onChangeSelected}
+            <Header
+                overlay={true}
+                className="flex min-h-52 text-white"
+                style={{
+                    backgroundImage: `url(/img/categories/${category.id}.webp)`,
+                }}
+            >
+                <Button
+                    className="absolute top-5 btn-xs z-30"
+                    onClick={onItemSelected}
+                >
+                    <ChevronLeftIcon className="w-3" />
+                    Ver categorias
+                </Button>
+                <section className="m-auto pb-2 text-center text-shadow-lg">
+                    <Title
+                        text={category.name}
+                        size="2xl"
+                        weight="bold"
+                    ></Title>
+                    <Paragraph
+                        text={category.description}
+                        className="text-sm"
                     />
-                ))}
-            </div>
-            <Counter cart={cart} />
+                </section>
+            </Header>
+            <Container>
+                <section className="mb-4">
+                    <Paragraph text="Selecciona el paquete que deseas contratar:" />
+                </section>
+                <section className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
+                    {bundles.map((bundle) => (
+                        <Card
+                            id={String(bundle.id)}
+                            key={bundle.id}
+                            title={bundle.name}
+                            subtitle={bundle.description}
+                            price={bundle.price}
+                            category={category.name}
+                            categoryId={category.id}
+                            services={bundle.services}
+                            disabled={
+                                selectedBundle !== null &&
+                                selectedBundle !== bundle.id
+                            }
+                            cart={Cart}
+                            change={onChangeSelected}
+                        />
+                    ))}
+                </section>
+            </Container>
+            <Footer></Footer>
         </>
     )
 }

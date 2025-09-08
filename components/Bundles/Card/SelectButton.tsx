@@ -39,7 +39,7 @@ const SelectButton = ({
             className={`my-3 ${selected && selectedClasses}`}
             onClick={onItemSelected}
         >
-            {selected ? 'Quitar' : 'Seleccionar'}
+            {selected ? 'Remover' : 'Seleccionar'}
         </Button>
     )
 }

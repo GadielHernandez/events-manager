@@ -8,7 +8,7 @@ type FormCardProps = {
 const FormCard = ({ title, children }: FormCardProps) => {
     return (
         <Card>
-            <header className="text-xl font-semibold tracking-wide">
+            <header className="text-lg font-bold tracking-wide uppercase">
                 {title}
             </header>
             {children}

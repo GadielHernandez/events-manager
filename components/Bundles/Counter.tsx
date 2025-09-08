@@ -3,7 +3,7 @@ import React, { PropsWithChildren, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 interface CounterProps extends PropsWithChildren {
-    cart: Cart
+    cart: typeof Cart
 }
 
 const Counter = ({ cart }: CounterProps) => {
