@@ -5,7 +5,7 @@ import Card from './Card'
 import Cart from '@/lib/storage/Cart'
 import { BundleType, CategoryType } from '@/lib/storage/services/types'
 import Category from '@/lib/api/Category'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Container from '../Common/Container'
 import Header from '../Common/Header'
 import Paragraph from '../Common/Typography/Paragraph'
@@ -13,7 +13,6 @@ import Title from '../Common/Typography/Title'
 import Footer from '../Footer'
 import Button from '../Common/Button'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
-import { useRouter } from 'next/navigation'
 
 type ContainerBundlesType = {
     categories: CategoryType[]
@@ -51,7 +50,7 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
     }
 
     const onItemSelected = () => {
-        console.log('hiii')
+        router.push('/')
     }
 
     useEffect(() => {
@@ -60,6 +59,13 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
 
     return (
         <>
+            <Button
+                className="absolute top-5 left-5 btn-xs z-50"
+                onClick={onItemSelected}
+            >
+                <ChevronLeftIcon className="w-3" />
+                Ver categorias
+            </Button>
             <Header
                 overlay={true}
                 className="flex min-h-52 text-white"
@@ -67,14 +73,7 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
                     backgroundImage: `url(/img/categories/${category.id}.webp)`,
                 }}
             >
-                <Button
-                    className="absolute top-5 btn-xs z-30"
-                    onClick={onItemSelected}
-                >
-                    <ChevronLeftIcon className="w-3" />
-                    Ver categorias
-                </Button>
-                <section className="m-auto pb-2 text-center text-shadow-lg">
+                <section className="m-auto pb-2 text-center text-shadow-lg z-10">
                     <Title
                         text={category.name}
                         size="2xl"

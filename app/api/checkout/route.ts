@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
         getBundleByCategory(bundle.categoryId, bundle.id).then((res) => ({
             ...res,
             category: bundle.category,
+            extras: bundle.extras,
         }))
     )
     const serverBundles = await Promise.all(findBundles)

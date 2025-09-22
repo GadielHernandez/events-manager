@@ -12,6 +12,7 @@ export type CategoryType = {
 export type ServiceType = {
     name: string
     details: string
+    options?: string[]
 }
 
 export type ServiceJsonType = {
@@ -19,6 +20,7 @@ export type ServiceJsonType = {
     details: string
     category: string
     bundles: string[]
+    options?: string[]
 }
 
 export type BundleJsonType = {
@@ -27,6 +29,7 @@ export type BundleJsonType = {
     description: string
     price: number
     services: ServiceType[]
+    extras: string[]
 }
 
 export type BundleType = {

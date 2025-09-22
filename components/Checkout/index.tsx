@@ -6,6 +6,8 @@ import AcceptButton from '@/components/Checkout/AcceptButton'
 import ConfirmDialog from '@/components/Checkout/ConfirmDialog'
 import Container from '../Common/Container'
 import Header from '../Common/Header'
+import Button from '../Common/Button'
+import Link from 'next/link'
 
 const CheckoutPage = () => {
     const idConfirmDialog = 'confirm-dialog'
@@ -26,8 +28,13 @@ const CheckoutPage = () => {
                     <section className="grid gap-4">
                         <CheckoutCards />
                     </section>
-                    <section className="">
+                    <section id="resume" className="">
                         <ListSelected />
+                        <Link href={'/'}>
+                            <Button className="btn-block mt-4 btn-outline btn-primary">
+                                Continuar viendo paquetes
+                            </Button>
+                        </Link>
                         <AcceptButton confirmDialog={idConfirmDialog} />
                         <ConfirmDialog id={idConfirmDialog} />
                     </section>

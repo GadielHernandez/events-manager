@@ -106,12 +106,19 @@ export async function generateContractImage(params: CreateEventParams) {
     let yStartServices = 960
     const xStartServices = 30
     const lineHeightServices = 45
+
     bundles.forEach((bundle) => {
         serviceCount++
         serviceText = `${serviceText} - ${bundle.name}(${bundle.category})`
+
+        if (bundle.extras) {
+            serviceText = `${serviceText} + ${bundle.extras.join(' + ')}`
+            serviceCount++
+        }
+
         total += bundle.price
 
-        if (serviceCount == 3) {
+        if (serviceCount == 2) {
             ctx.fillText(`${serviceText} `, xStartServices, yStartServices)
             yStartServices += lineHeightServices
             serviceCount = 0

@@ -59,12 +59,14 @@ export async function createEvent(params: CreateEventParams) {
 🎉 FESTEJADOS:
 - Nombres: ${Celebrated}
 
-📦 SERVICIOS \n
+📦 SERVICIOS:
 `.trim()
 
-        bundles.forEach(
-            (bundle) => (description = `${description} - ${bundle.name} \n`)
-        )
+        bundles.forEach((bundle) => {
+            description = `${description} - \n ${bundle.name} `
+            if (bundle.extras)
+                description = `${description} + ${bundle.extras.join(' + ')} `
+        })
 
         description += `\n FOLIO: ${contractFolio}`
 

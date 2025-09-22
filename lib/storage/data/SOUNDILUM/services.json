@@ -71,7 +71,7 @@
     },
     {
         "id": "S011",
-        "name": "1 servicio extra a elegir entre los siguientes:",
+        "name": "1 servicio extra a elegir",
         "details": "da clic para ver",
         "category": "SOUNDILUM",
         "bundles": ["P3", "P4"],
@@ -82,12 +82,12 @@
             "Cabina Pix (Fotocabina) con servicio por 3 horas",
             "Insta Pix con 50 fotografías instantáneas",
             "Alfombra Roja, opción de fotos digitales",
-            "Robot LED Man + 1 Cabezón, servicio con un máximo de 30 minutos de diversión cada uno]"
+            "Robot LED Man + 1 Cabezón, servicio con un máximo de 30 minutos de diversión cada uno"
         ]
     },
     {
         "id": "S012",
-        "name": "1 servicio premium a elegir entre los siguientes:",
+        "name": "1 servicio premium a elegir",
         "details": "da clic para ver",
         "category": "SOUNDILUM",
         "bundles": ["P4"],

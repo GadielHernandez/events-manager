@@ -5,6 +5,7 @@ import Button from '../Common/Button'
 import Paragraph from '../Common/Typography/Paragraph'
 import { useRouter } from 'next/navigation'
 import Cart, { CartItem } from '@/lib/storage/Cart'
+import Link from 'next/link'
 
 const Footer = () => {
     const router = useRouter()
@@ -23,10 +24,13 @@ const Footer = () => {
     return (
         <footer className="flex justify-between bg-neutral text-white p-4 w-full fixed bottom-0">
             <section>
-                <Paragraph
-                    text={`${bundles} paquetes`}
-                    className="font-medium"
-                />
+                <Link href={'/checkout#resume'}>
+                    <Paragraph
+                        text={`${bundles} paquetes`}
+                        className="font-medium hover:underline"
+                    />
+                </Link>
+
                 <Paragraph
                     text="SELECCIONADOS"
                     className="text-[10px] font-medium"
