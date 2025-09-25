@@ -3,7 +3,8 @@ import path from 'path'
 import { createCanvas, loadImage, registerFont } from 'canvas'
 
 const BASE_PATH = 'services/contract/'
-const CONTRACT_ADVANCE = Number(process.env.CONTRACT_ADVANCE || 3000)
+const MAX_CONTRACT_ADVANCE = Number(process.env.MAX_CONTRACT_ADVANCE || 3500)
+const MIN_CONTRACT_ADVANCE = Number(process.env.MIN_CONTRACT_ADVANCE || 1000)
 
 registerFont(path.join(process.cwd(), BASE_PATH, 'OpenSans-Regular.ttf'), {
     family: 'OpenSans',
@@ -22,6 +23,7 @@ type CreateEventParams = {
     PlaceAddress: string
     PlaceName: string
     bundles: any[]
+    imageName: string
 }
 
 const currency = Intl.NumberFormat('es-MX', {
@@ -43,6 +45,7 @@ export async function generateContractImage(params: CreateEventParams) {
         PlaceAddress,
         PlaceName,
         bundles,
+        imageName,
     } = params
 
     const width = 1125
@@ -50,7 +53,7 @@ export async function generateContractImage(params: CreateEventParams) {
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
 
-    const filePath = path.join(process.cwd(), BASE_PATH, 'contract.jpg')
+    const filePath = path.join(process.cwd(), BASE_PATH, imageName)
     const imageBuffer = await fs.readFile(filePath)
 
     const image = await loadImage(imageBuffer)
@@ -131,13 +134,13 @@ export async function generateContractImage(params: CreateEventParams) {
     ctx.fillText(`${PlaceName}, ${PlaceAddress}`, 347, 881) // Ubicacion
 
     let advance =
-        total <= CONTRACT_ADVANCE + CONTRACT_ADVANCE * 0.4
-            ? total * 0.4
-            : CONTRACT_ADVANCE
+        total <= MAX_CONTRACT_ADVANCE + MAX_CONTRACT_ADVANCE * 0.4
+            ? MIN_CONTRACT_ADVANCE
+            : MAX_CONTRACT_ADVANCE
 
     ctx.fillText(currency.format(total), 867, 1075) // Total
     ctx.fillText(currency.format(advance), 867, 1133) // Anticipo
-    ctx.fillText(currency.format(total - CONTRACT_ADVANCE), 867, 1163) // Resto
+    ctx.fillText(currency.format(total - advance), 867, 1163) // Resto
 
     // Exportar como imagen
     const buffer = canvas.toBuffer('image/jpeg')

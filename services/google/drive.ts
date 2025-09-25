@@ -21,11 +21,11 @@ class GoogleDrive {
         return folio
     }
 
-    async saveImage(img: Buffer, contractFolio: string) {
+    async saveImage(img: Buffer, name: string) {
         const drive = google.drive({ version: 'v3', auth: GoogleClient.auth })
         const result = await drive.files.create({
             requestBody: {
-                name: `Contrato${contractFolio}`,
+                name: name,
                 parents: this.folderId ? [this.folderId] : undefined,
             },
             media: {

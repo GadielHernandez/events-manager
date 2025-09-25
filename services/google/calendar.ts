@@ -96,7 +96,11 @@ export async function createEvent(params: CreateEventParams) {
     }
 }
 
-export async function addImageLinkToEvent(eventId: string, imageLink: string) {
+export async function addImageLinkToEvent(
+    eventId: string,
+    preContractLink: string,
+    contractImage: string
+) {
     const calendar = google.calendar({ version: 'v3', auth: GoogleClient.auth })
 
     // Obtener el evento actual
@@ -107,7 +111,8 @@ export async function addImageLinkToEvent(eventId: string, imageLink: string) {
 
     // Actualizar descripción con el link
     const newDescription =
-        (event.description || '') + `\n\n📎 Contrato: ${imageLink}`
+        (event.description || '') +
+        `\n\n📎 Contrato: ${preContractLink} \n\n PreContrato: ${contractImage}`
 
     const updated = await calendar.events.patch({
         calendarId: 'primary',

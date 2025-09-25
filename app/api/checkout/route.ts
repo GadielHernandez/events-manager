@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
         bundles: serverBundles,
     })
 
-    const image = await generateContractImage({
+    const contractImgParams = {
         contractFolio,
         Celebrated,
         ClientAddress,
@@ -58,12 +58,29 @@ export async function POST(req: NextRequest) {
         PlaceAddress,
         PlaceName,
         bundles: serverBundles,
+    }
+
+    const preContract = await generateContractImage({
+        ...contractImgParams,
+        imageName: 'pre-contract.jpg',
+    })
+    const contract = await generateContractImage({
+        ...contractImgParams,
+        imageName: 'contract.jpg',
     })
 
-    const saved = await GoogleDrive.saveImage(image, contractFolio)
+    const contractSave = await GoogleDrive.saveImage(
+        contract,
+        `Contract${contractFolio}`
+    )
+    const preContractSave = await GoogleDrive.saveImage(
+        preContract,
+        `PreContract${contractFolio}`
+    )
     const updated = await addImageLinkToEvent(
         event.id || '',
-        saved.webViewLink || ''
+        preContractSave.webViewLink || '',
+        contractSave.webViewLink || ''
     )
     return NextResponse.json(updated)
 }
