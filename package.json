@@ -24,6 +24,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/html-minifier-terser": "^7.0.2",
     "@types/node": "^20",
     "@types/nodemailer": "^7.0.2",
     "@types/react": "^19",
