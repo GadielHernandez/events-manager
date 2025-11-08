@@ -19,7 +19,7 @@ const texts: Record<string, string> = {
 export const createContract = async (
     values: Record<string, FormDataEntryValue>
 ) => {
-    const cart = new Cart()
+    const cart = Cart
     const pdf = new PDF()
     pdf.addHeader(
         new Date().toLocaleDateString(),
