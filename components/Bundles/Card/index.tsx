@@ -111,10 +111,14 @@ const BundleCard = ({
                 className="my-3"
             />
             <section>
-                <p className="text-4xl font-semibold">
-                    {currency.format(price)}{' '}
-                    <span className="text-2xl text-base-content/50">MXN</span>
-                </p>
+                {price && (
+                    <p className="text-4xl font-semibold">
+                        {currency.format(price)}{' '}
+                        <span className="text-2xl text-base-content/50">
+                            MXN
+                        </span>
+                    </p>
+                )}
             </section>
 
             <SelectButton

@@ -4,6 +4,7 @@ import { generateContractImage } from '@/services/contract'
 import { addImageLinkToEvent, createEvent } from '@/services/google/calendar'
 import { NextRequest, NextResponse } from 'next/server'
 import GoogleDrive from '@/services/google/drive'
+import { sendPreContractMail } from '@/services/email'
 
 export async function POST(req: NextRequest) {
     const {
@@ -71,16 +72,21 @@ export async function POST(req: NextRequest) {
 
     const contractSave = await GoogleDrive.saveImage(
         contract,
-        `Contract${contractFolio}`
+        `Contrato${contractFolio}`
     )
     const preContractSave = await GoogleDrive.saveImage(
         preContract,
-        `PreContract${contractFolio}`
+        `PreContrato${contractFolio}`
     )
     const updated = await addImageLinkToEvent(
         event.id || '',
         preContractSave.webViewLink || '',
         contractSave.webViewLink || ''
     )
+
+    await sendPreContractMail({
+        to: ClientEmail,
+        contract: preContract,
+    })
     return NextResponse.json(updated)
 }

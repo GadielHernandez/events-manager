@@ -4,7 +4,8 @@ import { createCanvas, loadImage, registerFont } from 'canvas'
 
 const BASE_PATH = 'services/contract/'
 const MAX_CONTRACT_ADVANCE = Number(process.env.MAX_CONTRACT_ADVANCE || 3500)
-const MIN_CONTRACT_ADVANCE = Number(process.env.MIN_CONTRACT_ADVANCE || 1000)
+const MIN_CONTRACT_ADVANCE = Number(process.env.MIN_CONTRACT_ADVANCE || 1500)
+const TOTAL_CONTRACT_MIN = Number(process.env.TOTAL_CONTRACT_MIN || 7000)
 
 registerFont(path.join(process.cwd(), BASE_PATH, 'OpenSans-Regular.ttf'), {
     family: 'OpenSans',
@@ -134,9 +135,11 @@ export async function generateContractImage(params: CreateEventParams) {
     ctx.fillText(`${PlaceName}, ${PlaceAddress}`, 347, 881) // Ubicacion
 
     let advance =
-        total <= MAX_CONTRACT_ADVANCE + MAX_CONTRACT_ADVANCE * 0.4
+        total <= TOTAL_CONTRACT_MIN
             ? MIN_CONTRACT_ADVANCE
             : MAX_CONTRACT_ADVANCE
+
+    advance = advance >= total ? total : advance
 
     ctx.fillText(currency.format(total), 867, 1075) // Total
     ctx.fillText(currency.format(advance), 867, 1133) // Anticipo

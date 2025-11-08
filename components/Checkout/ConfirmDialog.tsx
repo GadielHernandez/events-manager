@@ -22,9 +22,9 @@ const ConfirmDialog = ({ id }: ConfirmDialogProps) => {
                 <h3 className="font-black text-2xl mt-4">¡Listo!</h3>
                 <p className="text-sm py-4">
                     Hemos recibido tu información y tu{' '}
-                    <strong>solicitud</strong> ha sido creada, nos contactaremos
-                    en brevedad para confirmar la fecha de tu evento y confirmar
-                    el metodo de pago
+                    <strong>precontrato</strong> ha sido creado y te lo hemos
+                    enviado por correo, junto con la información de pago para
+                    confirmar el contrato para tu evento.
                 </p>
                 <div className="modal-action block">
                     <form method="dialog">

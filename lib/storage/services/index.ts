@@ -7,6 +7,31 @@ import {
     ServiceJsonType,
 } from './types'
 
+// {
+//     "id": "EFFECTS",
+//     "name": "Efectos especiales",
+//     "img": "EFFECTS.webp",
+//     "description": "Chisperos, burbujas, lluvia metálica y más para un momento inolvidable."
+// },
+// {
+//     "id": "PHOTO",
+//     "name": "Fotografía y video",
+//     "img": "PHOTO.webp",
+//     "description": "Captura cada instante con paquetes de foto y video a tu medida."
+// },
+// {
+//     "id": "ANIMATION",
+//     "name": "Animación",
+//     "img": "ANIMATION.webp",
+//     "description": "El show más aclamado, lleno de energía, coreografías y dinamismo con Alex Merla.."
+// },
+// {
+//     "id": "CABS",
+//     "name": "Fotocabinas",
+//     "img": "CABS.webp",
+//     "description": "VideoBooth 360°, cabinas interactivas y fotos instantáneas divertidas."
+// },
+
 const STORAGE_PATH = 'lib/storage/data/'
 
 export const getCategories = async () => {
