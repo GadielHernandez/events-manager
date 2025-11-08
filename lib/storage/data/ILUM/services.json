@@ -1,0 +1,16 @@
+[
+    {
+        "id": "ILUM001",
+        "name": "Pista Iluminada Infinity Gold 24 módulos (4.88 x 7.32 mts)",
+        "details": "",
+        "category": "ILUM",
+        "bundles": ["ILUM1"]
+    },
+    {
+        "id": "ILUM002",
+        "name": "Letras Iluminadas (c/u)",
+        "details": "",
+        "category": "ILUM",
+        "bundles": ["ILUM2"]
+    }
+]

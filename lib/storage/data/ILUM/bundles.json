@@ -1,0 +1,14 @@
+[
+    {
+        "id": "ILUM1",
+        "name": "Pista Iluminada",
+        "description": "Pista Gold que se ajusta a tu medida.",
+        "price": 12700.0
+    },
+    {
+        "id": "ILUM2",
+        "name": "Letras Iluminadas",
+        "description": "Escribe lo que sea, pueden iluminarse en múltiples colores o en un solo tono. (1.20 m)",
+        "price": 650.0
+    }
+]

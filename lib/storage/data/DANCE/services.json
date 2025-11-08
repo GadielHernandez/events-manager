@@ -1,0 +1,9 @@
+[
+    {
+        "id": "DAN001",
+        "name": "Coreografía",
+        "details": "Pantallas LED profesionales de 3x2mts",
+        "category": "DANCE",
+        "bundles": ["DAN1"]
+    }
+]

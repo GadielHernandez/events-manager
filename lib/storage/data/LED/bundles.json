@@ -1,0 +1,14 @@
+[
+    {
+        "id": "LED1",
+        "name": "Pantallas LED",
+        "description": "Pantallas LED profesionales de 3X4 mts",
+        "price": 8500.0
+    },
+    {
+        "id": "LED2",
+        "name": "Banner LED",
+        "description": "",
+        "price": 3800.0
+    }
+]

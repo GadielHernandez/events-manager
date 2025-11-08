@@ -1,0 +1,23 @@
+[
+    {
+        "id": "P001",
+        "name": "Cabezones de las cabezas de artistas famosos, animadores.",
+        "details": "",
+        "category": "PARTY",
+        "bundles": ["P01"]
+    },
+    {
+        "id": "P002",
+        "name": "Robot Led Man El más alto del mercado para tu pista de baile. (3 m)",
+        "details": "",
+        "category": "PARTY",
+        "bundles": ["P02"]
+    },
+    {
+        "id": "P003",
+        "name": "Batucada ponle ritmo a la pista",
+        "details": "",
+        "category": "PARTY",
+        "bundles": ["P03"]
+    }
+]

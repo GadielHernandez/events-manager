@@ -4,28 +4,28 @@
         "name": "Alfombra rosa o roja",
         "details": "",
         "category": "CARPET",
-        "bundles": ["C1", "C2", "C3"]
+        "bundles": ["C1", "C2", "C3", "C4", "C5"]
     },
     {
         "id": "C002",
         "name": "Banner gigante con el logo de nuestra marca",
         "details": "",
         "category": "CARPET",
-        "bundles": ["C1", "C2", "C3"]
+        "bundles": ["C1", "C2", "C3", "C4", "C5"]
     },
     {
         "id": "C003",
         "name": "Unifilas elegantes doradas con su cordón rojo",
         "details": "",
         "category": "CARPET",
-        "bundles": ["C1", "C2", "C3"]
+        "bundles": ["C1", "C2", "C3", "C4", "C5"]
     },
     {
         "id": "C004",
         "name": "Fotografo profesional",
         "details": "",
         "category": "CARPET",
-        "bundles": ["C1", "C2", "C3"]
+        "bundles": ["C1", "C2", "C3", "C4", "C5"]
     },
     {
         "id": "C005",
@@ -39,13 +39,20 @@
         "name": "Camarografo para capturar cada detalle",
         "details": "",
         "category": "CARPET",
-        "bundles": ["C2", "C3"]
+        "bundles": ["C2", "C3", "C4", "C5"]
     },
     {
         "id": "C007",
         "name": "Backstage exclusivo de tu evento",
         "details": "",
         "category": "CARPET",
-        "bundles": ["C3"]
+        "bundles": ["C3", "C5"]
+    },
+    {
+        "id": "C008",
+        "name": "Alex Merla entrevista a tus invitados",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["C4", "C5"]
     }
 ]

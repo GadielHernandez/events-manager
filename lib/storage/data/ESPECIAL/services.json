@@ -1,0 +1,9 @@
+[
+    {
+        "id": "ESP01",
+        "name": "Paquete DJ, Audio e Iluminación",
+        "details": "",
+        "category": "ESPECIAL",
+        "bundles": ["ESP1"]
+    }
+]

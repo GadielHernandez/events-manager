@@ -1,0 +1,16 @@
+[
+    {
+        "id": "LED01",
+        "name": "Pantallas LED (3x2mts)",
+        "details": "Pantallas LED profesionales de 3x2mts",
+        "category": "LED",
+        "bundles": ["LED1"]
+    },
+    {
+        "id": "LED02",
+        "name": "Banner LED",
+        "details": "Banner LED",
+        "category": "LED",
+        "bundles": ["LED2"]
+    }
+]
