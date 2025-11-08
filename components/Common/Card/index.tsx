@@ -5,7 +5,7 @@ type CardProps = {
     className?: string
 } & React.HtmlHTMLAttributes<HTMLDivElement>
 
-const Card = ({ children, className, ...htmlProps }: CardProps) => {
+const Card = ({ children, ...htmlProps }: CardProps) => {
     return (
         <article
             className="card bg-base-100 shadow-sm rounded-2xl"
