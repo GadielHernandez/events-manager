@@ -12,17 +12,16 @@ const STORAGE_KEY = 'cart'
 class Cart {
     private items: Map<string, CartItem> = new Map()
     private changeCallbacks: Array<(items: Map<string, CartItem>) => void> = []
-
-    constructor() {
-        this.loadFromStorage()
-    }
+    private initialized: boolean = false
 
     private saveToStorage() {
+        this.loadFromStorage()
         const itemsArray = Array.from(this.items.values())
         window.localStorage.setItem(STORAGE_KEY, JSON.stringify(itemsArray))
     }
 
     private loadFromStorage() {
+        if (this.initialized) return
         const data = window.localStorage.getItem(STORAGE_KEY)
         if (data) {
             try {
@@ -36,6 +35,7 @@ class Cart {
                 this.items.clear()
             }
         }
+        this.initialized = true
     }
 
     private notifyChange() {
@@ -54,6 +54,7 @@ class Cart {
     }
 
     addItem(item: CartItem) {
+        this.loadFromStorage()
         const existing = this.items.get(item.id)
         if (existing) return
 
@@ -62,35 +63,42 @@ class Cart {
     }
 
     removeItem(id: string) {
+        this.loadFromStorage()
         this.items.delete(id)
         this.updateAndSave()
     }
 
     clear() {
+        this.loadFromStorage()
         this.items.clear()
         window.localStorage.removeItem(STORAGE_KEY)
         this.notifyChange()
     }
 
     getItem(id: string): CartItem | undefined {
+        this.loadFromStorage()
         return this.items.get(id)
     }
 
     getItems(): CartItem[] {
+        this.loadFromStorage()
         return Array.from(this.items.values())
     }
 
     getItemsCategory(categoryId: string): CartItem[] {
+        this.loadFromStorage()
         return Array.from(this.items.values()).filter(
             (item) => item.categoryId === categoryId
         )
     }
 
     getTotal(): number {
+        this.loadFromStorage()
         return this.getItems().reduce((sum, item) => sum + item.price, 0)
     }
 
     toJSON() {
+        this.loadFromStorage()
         return this.getItems()
     }
 }
