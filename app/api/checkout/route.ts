@@ -63,11 +63,11 @@ export async function POST(req: NextRequest) {
 
     const preContract = await generateContractImage({
         ...contractImgParams,
-        imageName: 'pre-contract.jpg',
+        imageName: 'precontract',
     })
     const contract = await generateContractImage({
         ...contractImgParams,
-        imageName: 'contract.jpg',
+        imageName: 'contract',
     })
 
     const contractSave = await GoogleDrive.saveImage(

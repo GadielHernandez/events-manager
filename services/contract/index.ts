@@ -54,7 +54,11 @@ export async function generateContractImage(params: CreateEventParams) {
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
 
-    const filePath = path.join(process.cwd(), BASE_PATH, imageName)
+    const filePath =
+        imageName === 'contract'
+            ? path.join(process.cwd(), BASE_PATH, 'contract.jpg')
+            : path.join(process.cwd(), BASE_PATH, 'pre-contract.jpg')
+
     const imageBuffer = await fs.readFile(filePath)
 
     const image = await loadImage(imageBuffer)
