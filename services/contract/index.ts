@@ -95,6 +95,8 @@ export async function generateContractImage(params: CreateEventParams) {
     ctx.fillText(
         eventDate.toLocaleTimeString('es-MX', {
             timeZone: 'America/Monterrey',
+            hour: '2-digit',
+            minute: '2-digit',
         }),
         896,
         704
