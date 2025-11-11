@@ -1,0 +1,9 @@
+[
+    {
+        "id": "ANIMATION001",
+        "name": "45 minutos de animación con Alex Merla",
+        "details": "",
+        "category": "ANIMATION",
+        "bundles": ["ANIMATION1"]
+    }
+]

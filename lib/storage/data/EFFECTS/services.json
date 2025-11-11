@@ -1,0 +1,44 @@
+[
+    {
+        "id": "EFF001",
+        "name": "Niebla de piso de 3 a 4 minutos en un mismo vals",
+        "details": "",
+        "category": "EFFECTS",
+        "bundles": ["EFF1"]
+    },
+    {
+        "id": "EFF002",
+        "name": "1 disparo de lluvia",
+        "details": "",
+        "category": "EFFECTS",
+        "bundles": ["EFF2"]
+    },
+    {
+        "id": "EFF003",
+        "name": "1 disparo de mariposas",
+        "details": "",
+        "category": "EFFECTS",
+        "bundles": ["EFF3"]
+    },
+    {
+        "id": "EFF004",
+        "name": "6 chisperos de 30 seg c/u",
+        "details": "",
+        "category": "EFFECTS",
+        "bundles": ["EFF4"]
+    },
+    {
+        "id": "EFF005",
+        "name": "4 detonaciones de 20 segundos por máquina.",
+        "details": "",
+        "category": "EFFECTS",
+        "bundles": ["EFF5"]
+    },
+    {
+        "id": "EFF006",
+        "name": "3 a 4 minutos en un mismo vals.",
+        "details": "",
+        "category": "EFFECTS",
+        "bundles": ["EFF6"]
+    }
+]

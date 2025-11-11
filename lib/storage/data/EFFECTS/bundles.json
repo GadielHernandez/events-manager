@@ -1,0 +1,38 @@
+[
+    {
+        "id": "EFF1",
+        "name": "Vals en la nubes",
+        "description": "Un efecto mágico de estar bailando sobre las nubes. ",
+        "price": 2800.0
+    },
+    {
+        "id": "EFF2",
+        "name": "Lluvia Metálica",
+        "description": "Corneta profesional que lanza papel metálico al aire, creando una atmósfera brillante. ",
+        "price": 2300.0
+    },
+    {
+        "id": "EFF3",
+        "name": "Lluvia de Mariposas",
+        "description": "Corneta profesional que expulsa papel en forma de mariposas, creando un efecto visual encantador.",
+        "price": 2500.0
+    },
+    {
+        "id": "EFF4",
+        "name": "Chisperos",
+        "description": "Sistema electrónico de chispas frías, operados de forma remota para una mayor precisión en el momento que se deseado.",
+        "price": 2200.0
+    },
+    {
+        "id": "EFF5",
+        "name": "Sparkulars",
+        "description": "Ráfagas de luz fría, seguras al tacto y sin riesgo de incendio, ideales para salones con aspersores de agua o restricciones de chisperos.",
+        "price": 4600.0
+    },
+    {
+        "id": "EFF6",
+        "name": "Burbujas con Humo",
+        "description": "Máquina profesional que genera burbujas con humo en gran cantidad, creando un efecto visual único.",
+        "price": 2800.0
+    }
+]

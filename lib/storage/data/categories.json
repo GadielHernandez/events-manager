@@ -2,18 +2,28 @@
     "list": [
         {
             "id": "SOUNDILUM",
-            "name": "Audio, DJ, Iluminación",
+            "name": "Audio y DJ ",
             "img": "SOUNDILUM.webp",
             "description": "Sonido profesional, DJs y luces espectaculares que transforman cualquier evento."
         },
-
+        {
+            "id": "EFFECTS",
+            "name": "Efectos especiales",
+            "img": "EFFECTS.webp",
+            "description": "Chisperos, burbujas, lluvia metálica y más para un momento inolvidable."
+        },
         {
             "id": "CARPET",
-            "name": "Alfombra roja",
+            "name": "Mi alfombra roja",
             "img": "CARPET.webp",
             "description": "Sesiones de fotos, entrevistas y backstage para una entrada de estrella."
         },
-
+        {
+            "id": "ANIMATION",
+            "name": "Animación con Alex Merla",
+            "img": "ANIMATION.webp",
+            "description": "El show más aclamado, lleno de energía, coreografías y dinamismo con Alex Merla."
+        },
         {
             "id": "LED",
             "name": "Pantallas y banners LED",
@@ -23,13 +33,13 @@
 
         {
             "id": "ILUM",
-            "name": "Iluminación",
+            "name": "Pista iluminada y letras",
             "img": "ILUM.webp",
             "description": "Pistas Infinity y letras iluminadas para un ambiente único y elegante."
         },
         {
             "id": "PARTY",
-            "name": "En tu pista",
+            "name": "Animación y show para tu fiestas",
             "img": "PARTY.webp",
             "description": "Robots LED, batukada y personajes que elevan la energía en tu pista."
         },
@@ -42,8 +52,8 @@
         {
             "id": "ESPECIAL",
             "name": "Paquete de salon",
-            "img": "EFFECTS.webp",
-            "description": "Paquete exclusivo para salon de evento."
+            "img": "ESPECIAL.webp",
+            "description": "Paquete exclusivo para salones de eventos."
         }
     ]
 }
