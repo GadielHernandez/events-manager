@@ -19,6 +19,7 @@ export async function POST(req: NextRequest) {
         PlaceAddress,
         PlaceName,
         bundles,
+        CodeDiscount,
     } = await req.json()
 
     const findBundles = bundles.map((bundle: CartItem) =>
@@ -59,6 +60,7 @@ export async function POST(req: NextRequest) {
         PlaceAddress,
         PlaceName,
         bundles: serverBundles,
+        CodeDiscount,
     }
 
     const preContract = await generateContractImage({

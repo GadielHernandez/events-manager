@@ -25,12 +25,34 @@ type CreateEventParams = {
     PlaceName: string
     bundles: any[]
     imageName: string
+    CodeDiscount: string
 }
 
 const currency = Intl.NumberFormat('es-MX', {
     style: 'currency',
     currency: 'MXN',
 })
+
+const calculateFinalTotals = (total: number, CodeDiscount: string) => {
+    let finalTotal = total
+    if (CodeDiscount.startsWith('TCUSP-')) {
+        const discountText = CodeDiscount.replace('TCUSP-', '')
+        const discount = Number(discountText) || 0
+        finalTotal = finalTotal - discount
+    }
+
+    let advance =
+        finalTotal <= TOTAL_CONTRACT_MIN
+            ? MIN_CONTRACT_ADVANCE
+            : MAX_CONTRACT_ADVANCE
+
+    advance = advance >= total ? total : advance
+
+    return {
+        total: finalTotal,
+        advance,
+    }
+}
 
 export async function generateContractImage(params: CreateEventParams) {
     const {
@@ -47,6 +69,7 @@ export async function generateContractImage(params: CreateEventParams) {
         PlaceName,
         bundles,
         imageName,
+        CodeDiscount,
     } = params
 
     const width = 1125
@@ -140,16 +163,11 @@ export async function generateContractImage(params: CreateEventParams) {
 
     ctx.fillText(`${PlaceName}, ${PlaceAddress}`, 347, 881) // Ubicacion
 
-    let advance =
-        total <= TOTAL_CONTRACT_MIN
-            ? MIN_CONTRACT_ADVANCE
-            : MAX_CONTRACT_ADVANCE
+    const totals = calculateFinalTotals(total, CodeDiscount)
 
-    advance = advance >= total ? total : advance
-
-    ctx.fillText(currency.format(total), 867, 1075) // Total
-    ctx.fillText(currency.format(advance), 867, 1133) // Anticipo
-    ctx.fillText(currency.format(total - advance), 867, 1163) // Resto
+    ctx.fillText(currency.format(totals.total), 867, 1075) // Total
+    ctx.fillText(currency.format(totals.advance), 867, 1133) // Anticipo
+    ctx.fillText(currency.format(totals.total - totals.advance), 867, 1163) // Resto
 
     // Exportar como imagen
     const buffer = canvas.toBuffer('image/jpeg')

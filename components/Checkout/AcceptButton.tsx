@@ -44,10 +44,14 @@ const AcceptButton = ({ confirmDialog }: AcceptButtonProps) => {
             parseInt(hours as unknown as string),
             parseInt(minutes as unknown as string)
         )
+        const codeDiscount = document
+            .getElementById('codeDiscount')
+            ?.getAttribute('value')
 
         await Checkout.createPrecontact({
             ...formData,
             EventDateTime: eventDateTime.toISOString(),
+            CodeDiscount: codeDiscount || '',
         })
 
         const dialog = document?.getElementById(

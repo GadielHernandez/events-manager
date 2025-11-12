@@ -62,6 +62,7 @@ const ListSelected = () => {
                 <li className="list-row">
                     <article className="list-col-grow">
                         <InputField
+                            id="codeDiscount"
                             placeholder="Código de descuento"
                             value={codeDiscount}
                             onChange={(e) => setCodeDiscount(e.target.value)}
