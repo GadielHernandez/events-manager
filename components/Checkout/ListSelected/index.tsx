@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import ListItem from './ListItem'
 import Card from '@/components/Common/Card'
 import Cart, { CartItem } from '@/lib/storage/Cart'
+import InputField from '@/components/Common/DataInput/InputField'
+import Button from '@/components/Common/Button'
 
 const ListSelected = () => {
     const currency = new Intl.NumberFormat('es-MX', {
@@ -10,16 +12,33 @@ const ListSelected = () => {
         currency: 'MXN',
     })
 
+    const [codeDiscount, setCodeDiscount] = useState('')
     const [items, setItems] = useState<CartItem[] | null>(null)
     const [total, setTotal] = useState<number>(0)
 
-    useEffect(() => {
+    const calculateDiscount = () => {
+        if (!codeDiscount || !codeDiscount.startsWith('TCUSP-')) return
+
+        const discountText = codeDiscount.replace('TCUSP-', '')
+        const discount = Number(discountText) || 0
+
+        const itemsTotal = calculateTotal()
+        const newTotal = itemsTotal - discount
+        setTotal(newTotal)
+    }
+
+    const calculateTotal = () => {
         const items = Cart.getItems()
         setItems(items)
 
         const total = items.reduce((sum, item) => {
             return sum + item.price
         }, 0)
+        return total
+    }
+
+    useEffect(() => {
+        const total = calculateTotal()
         setTotal(total)
     }, [])
 
@@ -29,6 +48,7 @@ const ListSelected = () => {
                 <li className="p-4 text-sm font-bold tracking-wide">
                     PAQUETES SELECCIONADOS
                 </li>
+
                 {items?.map((item) => (
                     <ListItem
                         key={item.id}
@@ -38,6 +58,24 @@ const ListSelected = () => {
                         price={currency.format(item.price)}
                     ></ListItem>
                 ))}
+
+                <li className="list-row">
+                    <article className="list-col-grow">
+                        <InputField
+                            placeholder="Código de descuento"
+                            value={codeDiscount}
+                            onChange={(e) => setCodeDiscount(e.target.value)}
+                        />
+                    </article>
+                    <aside className="py-1">
+                        <Button
+                            className="rounded-lg"
+                            onClick={calculateDiscount}
+                        >
+                            Aplicar
+                        </Button>
+                    </aside>
+                </li>
 
                 <li className="list-row">
                     <article className="list-col-grow">
