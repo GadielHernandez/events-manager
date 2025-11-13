@@ -1,6 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { createCanvas, loadImage, registerFont } from 'canvas'
+import { checkDiscount } from '../discount'
 
 const BASE_PATH = 'services/contract/'
 const MAX_CONTRACT_ADVANCE = Number(process.env.MAX_CONTRACT_ADVANCE || 3500)
@@ -34,19 +35,15 @@ const currency = Intl.NumberFormat('es-MX', {
 })
 
 const calculateFinalTotals = (total: number, CodeDiscount: string) => {
-    let finalTotal = total
-    if (CodeDiscount.startsWith('TCUSP-')) {
-        const discountText = CodeDiscount.replace('TCUSP-', '')
-        const discount = Number(discountText) || 0
-        finalTotal = finalTotal - discount
-    }
+    const discount = checkDiscount(CodeDiscount)
+    let finalTotal = total - discount
 
     let advance =
         finalTotal <= TOTAL_CONTRACT_MIN
             ? MIN_CONTRACT_ADVANCE
             : MAX_CONTRACT_ADVANCE
 
-    advance = advance >= total ? total : advance
+    advance = advance >= finalTotal ? total : advance
 
     return {
         total: finalTotal,

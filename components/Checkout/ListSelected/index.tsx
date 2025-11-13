@@ -5,6 +5,7 @@ import Card from '@/components/Common/Card'
 import Cart, { CartItem } from '@/lib/storage/Cart'
 import InputField from '@/components/Common/DataInput/InputField'
 import Button from '@/components/Common/Button'
+import Discount from '@/lib/api/Discount'
 
 const ListSelected = () => {
     const currency = new Intl.NumberFormat('es-MX', {
@@ -16,11 +17,8 @@ const ListSelected = () => {
     const [items, setItems] = useState<CartItem[] | null>(null)
     const [total, setTotal] = useState<number>(0)
 
-    const calculateDiscount = () => {
-        if (!codeDiscount || !codeDiscount.startsWith('TCUSP-')) return
-
-        const discountText = codeDiscount.replace('TCUSP-', '')
-        const discount = Number(discountText) || 0
+    const calculateDiscount = async () => {
+        const discount = await Discount.checkDiscount(codeDiscount)
 
         const itemsTotal = calculateTotal()
         const newTotal = itemsTotal - discount
