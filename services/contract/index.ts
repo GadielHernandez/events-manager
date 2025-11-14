@@ -93,7 +93,12 @@ export async function generateContractImage(params: CreateEventParams) {
 
     const now = new Date()
     ctx.fillText(
-        now.toLocaleDateString('es-MX', { timeZone: 'America/Monterrey' }),
+        now.toLocaleDateString('es-MX', {
+            timeZone: 'America/Monterrey',
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        }),
         20,
         75
     ) // Fecha
@@ -103,6 +108,9 @@ export async function generateContractImage(params: CreateEventParams) {
     ctx.fillText(
         eventDate.toLocaleDateString('es-MX', {
             timeZone: 'America/Monterrey',
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
         }),
         706,
         607
