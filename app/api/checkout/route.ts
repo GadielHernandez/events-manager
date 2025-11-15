@@ -31,7 +31,10 @@ export async function POST(req: NextRequest) {
     )
     const serverBundles = await Promise.all(findBundles)
 
+    await GoogleDrive.setFolder()
+    await GoogleDrive.setCounter()
     const contractFolio = GoogleDrive.getContractFolio()
+
     const event = await createEvent({
         contractFolio,
         Celebrated,
@@ -63,32 +66,47 @@ export async function POST(req: NextRequest) {
         CodeDiscount,
     }
 
-    const preContract = await generateContractImage({
-        ...contractImgParams,
-        imageName: 'precontract',
-    })
-    const contract = await generateContractImage({
-        ...contractImgParams,
-        imageName: 'contract',
-    })
+    const [precontract, contract] = await Promise.all([
+        generateContractImage({
+            ...contractImgParams,
+            imageName: 'precontract',
+        }),
+        generateContractImage({
+            ...contractImgParams,
+            imageName: 'contract',
+        }),
+    ])
 
-    const contractSave = await GoogleDrive.saveImage(
-        contract,
-        `Contrato${contractFolio}`
-    )
-    const preContractSave = await GoogleDrive.saveImage(
-        preContract,
-        `PreContrato${contractFolio}`
-    )
+    const [precontractSave, contractSave] = await Promise.all([
+        GoogleDrive.saveImage(precontract, `PreContrato${contractFolio}`),
+        GoogleDrive.saveImage(contract, `Contrato${contractFolio}`),
+    ])
+    // const preContract = await generateContractImage({
+    //     ...contractImgParams,
+    //     imageName: 'precontract',
+    // })
+    // const contract = await generateContractImage({
+    //     ...contractImgParams,
+    //     imageName: 'contract',
+    // })
+
+    // const contractSave = await GoogleDrive.saveImage(
+    //     contract,
+    //     `Contrato${contractFolio}`
+    // )
+    // const preContractSave = await GoogleDrive.saveImage(
+    //     preContract,
+    //     `PreContrato${contractFolio}`
+    // )
     const updated = await addImageLinkToEvent(
         event.id || '',
-        preContractSave.webViewLink || '',
+        precontractSave.webViewLink || '',
         contractSave.webViewLink || ''
     )
 
     await sendPreContractMail({
         to: ClientEmail,
-        contract: preContract,
+        contract: precontract,
     })
     return NextResponse.json(updated)
 }
