@@ -44,6 +44,12 @@
             "description": "Robots LED, batukada y personajes que elevan la energía en tu pista."
         },
         {
+            "id": "CABS",
+            "name": "Foto cabinas",
+            "img": "CABS.webp",
+            "description": "Diversión instantánea y recuerdos que duran para siempre."
+        },
+        {
             "id": "DANCE",
             "name": "Ensayos personalizados",
             "img": "DANCE.webp",

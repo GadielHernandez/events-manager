@@ -1,0 +1,44 @@
+[
+    {
+        "id": "PHOTOBOOTH1",
+        "name": "Cabina Pix - 3 horas",
+        "description": "Fotos instantáneas con diversión garantizada.",
+        "price": 12000.0
+    },
+    {
+        "id": "PHOTOBOOTH2",
+        "name": "Cabina Pix - 5 horas",
+        "description": "Más tiempo, más fotos y más momentos únicos.",
+        "price": 3600.0
+    },
+    {
+        "id": "PHOTOBOOTH3",
+        "name": "Videobooth 360 - 3 horas",
+        "description": "Videos 360° espectaculares en cada giro.",
+        "price": 4600.0
+    },
+    {
+        "id": "PHOTOBOOTH4",
+        "name": "Videobooth 360 - 5 horas",
+        "description": "Cáptura épica en 360° durante todo tu evento.",
+        "price": 3600.0
+    },
+    {
+        "id": "PHOTOBOOTH5",
+        "name": "Instant Pix - 30 fotos",
+        "description": "Fotos impresas al instante para tus invitados.",
+        "price": 3800.0
+    },
+    {
+        "id": "PHOTOBOOTH6",
+        "name": "Instant Pix - 40 fotos",
+        "description": "Recuerdos impresos con un toque especial.",
+        "price": 4600.0
+    },
+    {
+        "id": "PHOTOBOOTH7",
+        "name": "Instant Pix - 50 fotos",
+        "description": "Más fotos para más sonrisas en tu evento.",
+        "price": 5400.0
+    }
+]

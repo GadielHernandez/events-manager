@@ -1,0 +1,184 @@
+[
+    {
+        "id": "PIX01",
+        "name": "Fotos personalizadas, impresas e ilimitadas",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH2"]
+    },
+    {
+        "id": "PIX02",
+        "name": "Iluminación para fotografías",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH2"]
+    },
+    {
+        "id": "PIX03",
+        "name": "Cabina de fotos inflable con iluminación led",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH2"]
+    },
+    {
+        "id": "PIX04",
+        "name": "Accesorios tipo disfraz a préstamo",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH2"]
+    },
+    {
+        "id": "PIX05",
+        "name": "Pantalla táctil con menú amigable",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH2"]
+    },
+    {
+        "id": "PIX06",
+        "name": "Personal de ayuda Pix Party",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH2"]
+    },
+    {
+        "id": "PIX07",
+        "name": "Fotografías digitales que podrás descargar desde nuestra página oficial de Facebook",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH2"]
+    },
+    {
+        "id": "PIX08",
+        "name": "Fotografías digitales que podrás descargar desde nuestra página oficial de Facebook",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH2"]
+    },
+    {
+        "id": "PIX09",
+        "name": "Fotografías digitales que podrás descargar desde nuestra página oficial de Facebook",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH2"]
+    },
+    {
+        "id": "VID01",
+        "name": "Videos personalizados ilimitados.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH3"]
+    },
+    {
+        "id": "VID02",
+        "name": "Plataforma de 1 metro de diámetro, motorizada y segura (control remoto).",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH3"]
+    },
+    {
+        "id": "VID03",
+        "name": "Capacidad para hasta 8 personas por video.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH3", "PHOTOBOOTH4"]
+    },
+    {
+        "id": "VID04",
+        "name": "WiFi para compartir los videos al instante.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH3", "PHOTOBOOTH4"]
+    },
+    {
+        "id": "VID05",
+        "name": "luminación LED fría y aro de luz de 20”.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH3", "PHOTOBOOTH4"]
+    },
+    {
+        "id": "VID06",
+        "name": "Accesorios y props divertidos.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH3", "PHOTOBOOTH4"]
+    },
+    {
+        "id": "VID07",
+        "name": "Personal de apoyo Pix Party.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH3", "PHOTOBOOTH4"]
+    },
+    {
+        "id": "INST01",
+        "name": "Servicio durante la recepción de los invitados.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH5", "PHOTOBOOTH6", "PHOTOBOOTH7"]
+    },
+    {
+        "id": "INST02",
+        "name": "Álbum de firmas en acrílico personalizado con el nombre del festejado.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH5", "PHOTOBOOTH6", "PHOTOBOOTH7"]
+    },
+    {
+        "id": "INST03",
+        "name": "Mesa decorada con letrero, florero, marcadores y cinta decorativa.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH5", "PHOTOBOOTH6", "PHOTOBOOTH7"]
+    },
+    {
+        "id": "INST04",
+        "name": "Fotografías instantáneas.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH5", "PHOTOBOOTH6", "PHOTOBOOTH7"]
+    },
+    {
+        "id": "INST05",
+        "name": "Personal de apoyo Pix Party.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH5"]
+    },
+    {
+        "id": "BOOTH01",
+        "name": "3 horas de servicio",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH1", "PHOTOBOOTH3"]
+    },
+    {
+        "id": "BOOTH02",
+        "name": "5 horas de servicio.",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH2", "PHOTOBOOTH4"]
+    },
+    {
+        "id": "BOOTH03",
+        "name": "30 fotos",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH5"]
+    },
+    {
+        "id": "BOOTH04",
+        "name": "40 fotos",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH6"]
+    },
+    {
+        "id": "BOOTH05",
+        "name": "50 fotos",
+        "details": "",
+        "category": "PHOTOBOOTH",
+        "bundles": ["PHOTOBOOTH7"]
+    }
+]
