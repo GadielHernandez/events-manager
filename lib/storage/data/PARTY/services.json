@@ -19,5 +19,12 @@
         "details": "",
         "category": "PARTY",
         "bundles": ["P03"]
+    },
+    {
+        "id": "P004",
+        "name": "La mejor animacion para tu evento",
+        "details": "",
+        "category": "PARTY",
+        "bundles": ["P04"]
     }
 ]

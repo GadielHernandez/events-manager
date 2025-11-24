@@ -16,5 +16,12 @@
         "name": "Batucada",
         "description": "",
         "price": 7000.0
+    },
+
+    {
+        "id": "P04",
+        "name": "Animador",
+        "description": "",
+        "price": 3500.0
     }
 ]
