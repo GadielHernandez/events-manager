@@ -2,7 +2,8 @@ import { drive_v3, google } from 'googleapis'
 import GoogleClient from './index'
 import { Readable } from 'stream'
 
-const FILE_NAME_PREFIX = 'Contrato'
+const FILE_NAME_PREFIX_CONTRACT = process.env.FILE_NAME_PREFIX_CONTRACT
+const FILE_NAME_PREFIX_PRECONTRACT = process.env.FILE_NAME_PREFIX_PRECONTRACT
 const MAX_ID_LEN = 5
 
 class GoogleDrive {
@@ -89,7 +90,13 @@ class GoogleDrive {
         if (!lastFile) return
 
         const fileName = lastFile.name
-        const current = fileName?.replace(FILE_NAME_PREFIX, '') || '0'
+        const PREFIX = fileName?.includes(
+            FILE_NAME_PREFIX_PRECONTRACT as string
+        )
+            ? (FILE_NAME_PREFIX_PRECONTRACT as string)
+            : (FILE_NAME_PREFIX_CONTRACT as string)
+        const current = fileName?.replace(PREFIX, '') || '0'
+
         this.counter = parseInt(current)
     }
 }

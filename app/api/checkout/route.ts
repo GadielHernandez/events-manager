@@ -6,6 +6,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import GoogleDrive from '@/services/google/drive'
 import { sendPreContractMail } from '@/services/email'
 
+const FILE_NAME_PREFIX_CONTRACT = process.env.FILE_NAME_PREFIX_CONTRACT
+const FILE_NAME_PREFIX_PRECONTRACT = process.env.FILE_NAME_PREFIX_PRECONTRACT
+
 export async function POST(req: NextRequest) {
     const {
         Celebrated,
@@ -78,26 +81,16 @@ export async function POST(req: NextRequest) {
     ])
 
     const [precontractSave, contractSave] = await Promise.all([
-        GoogleDrive.saveImage(precontract, `PreContrato${contractFolio}`),
-        GoogleDrive.saveImage(contract, `Contrato${contractFolio}`),
+        GoogleDrive.saveImage(
+            precontract,
+            `${FILE_NAME_PREFIX_PRECONTRACT}${contractFolio}`
+        ),
+        GoogleDrive.saveImage(
+            contract,
+            `${FILE_NAME_PREFIX_CONTRACT}${contractFolio}`
+        ),
     ])
-    // const preContract = await generateContractImage({
-    //     ...contractImgParams,
-    //     imageName: 'precontract',
-    // })
-    // const contract = await generateContractImage({
-    //     ...contractImgParams,
-    //     imageName: 'contract',
-    // })
 
-    // const contractSave = await GoogleDrive.saveImage(
-    //     contract,
-    //     `Contrato${contractFolio}`
-    // )
-    // const preContractSave = await GoogleDrive.saveImage(
-    //     preContract,
-    //     `PreContrato${contractFolio}`
-    // )
     const updated = await addImageLinkToEvent(
         event.id || '',
         precontractSave.webViewLink || '',
