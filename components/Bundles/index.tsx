@@ -23,7 +23,6 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
 
     const [category, setCategory] = useState<CategoryType>(categories[0])
     const [bundles, setBundles] = useState<BundleType[]>([])
-    const [_selectedBundle, setSelectedBundle] = useState<string | null>(null)
 
     const searchParams = useSearchParams()
     const selectedCategory =
@@ -32,21 +31,11 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
         ) || categories[0]
 
     const setCategorySelected = async (categoryId: string) => {
-        const listBundlesSelected = Cart.getItemsCategory(categoryId)
-
-        if (listBundlesSelected && listBundlesSelected.length > 0)
-            setSelectedBundle(listBundlesSelected[0].id)
-        else setSelectedBundle(null)
-
         const selectedCategory = categories.find((cat) => cat.id === categoryId)
         setCategory(selectedCategory || categories[0])
 
         const listBundles = await Category.getBundles(categoryId)
         setBundles(listBundles)
-    }
-
-    const onChangeSelected = (_selectedId: string | null) => {
-        //setSelectedBundle(selectedId)
     }
 
     const onItemSelected = () => {
@@ -101,7 +90,6 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
                             categoryId={category.id}
                             services={bundle.services}
                             cart={Cart}
-                            change={onChangeSelected}
                         />
                     ))}
                 </section>
