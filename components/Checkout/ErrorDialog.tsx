@@ -1,7 +1,5 @@
 'use client'
-import Cart from '@/lib/storage/Cart'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
-import { useRouter } from 'next/navigation'
 import React from 'react'
 import Button from '../Common/Button'
 
@@ -10,7 +8,6 @@ type ConfirmDialogProps = {
 }
 
 const ConfirmDialog = ({ id }: ConfirmDialogProps) => {
-    const router = useRouter()
     return (
         <dialog id={id} className="modal">
             <div className="modal-box text-center max-w-md rounded-2xl">
