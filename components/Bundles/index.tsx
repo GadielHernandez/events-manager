@@ -46,7 +46,7 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
     }
 
     const onChangeSelected = (selectedId: string | null) => {
-        setSelectedBundle(selectedId)
+        //setSelectedBundle(selectedId)
     }
 
     const onItemSelected = () => {
@@ -100,10 +100,6 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
                             category={category.name}
                             categoryId={category.id}
                             services={bundle.services}
-                            disabled={
-                                selectedBundle !== null &&
-                                selectedBundle !== bundle.id
-                            }
                             cart={Cart}
                             change={onChangeSelected}
                         />
