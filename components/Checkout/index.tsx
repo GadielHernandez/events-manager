@@ -8,9 +8,11 @@ import Container from '../Common/Container'
 import Header from '../Common/Header'
 import Button from '../Common/Button'
 import Link from 'next/link'
+import ErrorDialog from './ErrorDialog'
 
 const CheckoutPage = () => {
     const idConfirmDialog = 'confirm-dialog'
+    const idErrorDialog = 'error-dialog'
     return (
         <>
             <Header className="flex min-h-48 bg-primary text-white">
@@ -35,8 +37,12 @@ const CheckoutPage = () => {
                                 Continuar viendo paquetes
                             </Button>
                         </Link>
-                        <AcceptButton confirmDialog={idConfirmDialog} />
+                        <AcceptButton
+                            confirmDialog={idConfirmDialog}
+                            errorDialog={idErrorDialog}
+                        />
                         <ConfirmDialog id={idConfirmDialog} />
+                        <ErrorDialog id={idErrorDialog} />
                     </section>
                 </div>
             </Container>

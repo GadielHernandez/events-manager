@@ -5,9 +5,10 @@ import Button from '../Common/Button'
 
 type AcceptButtonProps = {
     confirmDialog: string
+    errorDialog: string
 }
 
-const AcceptButton = ({ confirmDialog }: AcceptButtonProps) => {
+const AcceptButton = ({ confirmDialog, errorDialog }: AcceptButtonProps) => {
     const [loading, setLoading] = useState(false)
     const onClick = async () => {
         setLoading(true)
@@ -48,11 +49,20 @@ const AcceptButton = ({ confirmDialog }: AcceptButtonProps) => {
             .getElementById('codeDiscount')
             ?.getAttribute('value')
 
-        await Checkout.createPrecontact({
+        const response = await Checkout.createPrecontact({
             ...formData,
             EventDateTime: eventDateTime.toISOString(),
             CodeDiscount: codeDiscount || '',
         })
+
+        if (response?.error) {
+            const dialog = document?.getElementById(
+                errorDialog
+            ) as HTMLDialogElement
+            dialog.showModal()
+            setLoading(false)
+            return
+        }
 
         const dialog = document?.getElementById(
             confirmDialog

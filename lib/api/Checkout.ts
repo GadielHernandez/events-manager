@@ -15,7 +15,7 @@ class Calendar {
             return
         } catch (error) {
             console.error('❌ Error:', error)
-            return
+            return { error: 'Error creating the event' }
         }
     }
 }
