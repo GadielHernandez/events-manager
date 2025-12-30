@@ -17,10 +17,15 @@
         "description": "",
         "price": 7000.0
     },
-
     {
         "id": "P04",
         "name": "Animador",
+        "description": "",
+        "price": 3500.0
+    },
+    {
+        "id": "P05",
+        "name": "Carrito de shots",
         "description": "",
         "price": 3500.0
     }

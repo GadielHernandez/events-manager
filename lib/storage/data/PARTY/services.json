@@ -26,5 +26,12 @@
         "details": "",
         "category": "PARTY",
         "bundles": ["P04"]
+    },
+    {
+        "id": "P005",
+        "name": "100 shots de diferentes sabores",
+        "details": "",
+        "category": "PARTY",
+        "bundles": ["P05"]
     }
 ]
