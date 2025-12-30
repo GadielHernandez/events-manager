@@ -23,7 +23,7 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
 
     const [category, setCategory] = useState<CategoryType>(categories[0])
     const [bundles, setBundles] = useState<BundleType[]>([])
-    const [selectedBundle, setSelectedBundle] = useState<string | null>(null)
+    const [_selectedBundle, setSelectedBundle] = useState<string | null>(null)
 
     const searchParams = useSearchParams()
     const selectedCategory =
@@ -45,7 +45,7 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
         setBundles(listBundles)
     }
 
-    const onChangeSelected = (selectedId: string | null) => {
+    const onChangeSelected = (_selectedId: string | null) => {
         //setSelectedBundle(selectedId)
     }
 
