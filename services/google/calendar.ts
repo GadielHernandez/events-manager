@@ -112,7 +112,7 @@ export async function addImageLinkToEvent(
     // Actualizar descripción con el link
     const newDescription =
         (event.description || '') +
-        `\n\n📎 Contrato: ${preContractLink} \n\n PreContrato: ${contractImage}`
+        `\n\n📎 Contrato: ${contractImage} \n\n PreContrato: ${preContractLink}`
 
     const updated = await calendar.events.patch({
         calendarId: 'primary',

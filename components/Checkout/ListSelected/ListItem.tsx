@@ -5,11 +5,25 @@ import React from 'react'
 type ListItemProps = {
     category: string
     name: string
-    price: string
+    price: number
     categoryId: string
+    quantity: number
 }
-const ListItem = ({ category, name, price, categoryId }: ListItemProps) => {
+const ListItem = ({
+    category,
+    name,
+    price,
+    categoryId,
+    quantity,
+}: ListItemProps) => {
     const categoryURL = `/services?category=${categoryId}`
+    const currency = new Intl.NumberFormat('es-MX', {
+        style: 'currency',
+        currency: 'MXN',
+    })
+
+    const priceTotal = quantity > 0 ? price * quantity : price
+
     return (
         <li className="list-row">
             <Link href={categoryURL}>
@@ -18,12 +32,16 @@ const ListItem = ({ category, name, price, categoryId }: ListItemProps) => {
                 </button>
             </Link>
             <article className="list-col-grow">
-                <header>{name}</header>
+                <header>
+                    {name} {quantity > 0 && `x${quantity}`}
+                </header>
                 <p className="text-xs uppercase font-semibold opacity-60">
                     {category}
                 </p>
             </article>
-            <aside className="font-medium m-auto">{price}</aside>
+            <aside className="font-medium m-auto">
+                {currency.format(priceTotal)}
+            </aside>
         </li>
     )
 }

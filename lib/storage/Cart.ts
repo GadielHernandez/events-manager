@@ -5,6 +5,7 @@ export type CartItem = {
     category: string
     categoryId: string
     extras?: string[]
+    quantity: number
 }
 
 const STORAGE_KEY = 'cart'

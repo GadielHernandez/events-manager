@@ -30,6 +30,7 @@ export async function POST(req: NextRequest) {
             ...res,
             category: bundle.category,
             extras: bundle.extras,
+            quantitySelected: bundle.quantity,
         }))
     )
     const serverBundles = await Promise.all(findBundles)

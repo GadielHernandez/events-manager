@@ -30,7 +30,9 @@ const ListSelected = () => {
         setItems(items)
 
         const total = items.reduce((sum, item) => {
-            return sum + item.price
+            const itemTotal =
+                item.quantity > 0 ? item.price * item.quantity : item.price
+            return sum + itemTotal
         }, 0)
         return total
     }
@@ -53,7 +55,8 @@ const ListSelected = () => {
                         categoryId={item.categoryId}
                         category={item.category}
                         name={item.name}
-                        price={currency.format(item.price)}
+                        price={item.price}
+                        quantity={item.quantity}
                     ></ListItem>
                 ))}
 

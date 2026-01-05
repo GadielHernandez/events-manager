@@ -8,7 +8,11 @@
     {
         "id": "LED2",
         "name": "Banner LED",
-        "description": "",
-        "price": 3800.0
+        "description": "Banner LED",
+        "price": 3800.0,
+        "quantity": {
+            "max": 5,
+            "unit": "banners"
+        }
     }
 ]

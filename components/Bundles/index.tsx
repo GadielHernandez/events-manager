@@ -89,6 +89,7 @@ const ContainerBundles = ({ categories = [] }: ContainerBundlesType) => {
                             category={category.name}
                             categoryId={category.id}
                             services={bundle.services}
+                            quantity={bundle.quantity}
                             cart={Cart}
                         />
                     ))}

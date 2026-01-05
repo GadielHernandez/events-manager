@@ -30,6 +30,10 @@ export type BundleJsonType = {
     price: number
     services: ServiceType[]
     extras: string[]
+    quantity?: {
+        max: number
+        unit: string
+    }
 }
 
 export type BundleType = {

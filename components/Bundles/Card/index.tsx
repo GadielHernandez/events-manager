@@ -7,6 +7,7 @@ import SelectButton from './SelectButton'
 import Cart from '@/lib/storage/Cart'
 import ExtrasDialog from '../ExtrasDialog'
 import MenuExtras from './MenuExtras'
+import SelectQuantity from './SelectQuantity'
 
 type BundleCardProps = {
     id: string
@@ -15,6 +16,7 @@ type BundleCardProps = {
     price: number
     category: string
     categoryId: string
+    quantity?: { max: number; unit: string }
     services: ServiceType[]
     disabled?: boolean
     cart: typeof Cart
@@ -30,6 +32,7 @@ const BundleCard = ({
     services,
     subtitle,
     disabled = false,
+    quantity,
     cart,
     change,
 }: BundleCardProps) => {
@@ -42,20 +45,46 @@ const BundleCard = ({
     const [extrasSelected, setExtrasSelected] = useState<string[]>([])
     const [currentExtras, setCurrentExtras] = useState<ServiceType | null>(null)
 
-    const onSelectItem = (selected: boolean) => {
-        const extrasServices = services.filter((s) => s.options)
+    const [showQuantityDialog, setShowQuantityDialog] = useState(false)
+    const [selectedQuantity, setSelectedQuantity] = useState<number | null>(
+        null
+    )
 
-        if (selected) {
-            if (extrasServices.length > 0) {
-                setDialogQueue(extrasServices)
-                setCurrentExtras(extrasServices[0])
-                setExtrasSelected([])
-            } else addToCart()
-        } else {
+    const onSelectItem = (selected: boolean) => {
+        if (!selected) {
             cart.removeItem(id)
+            setExtrasSelected([])
+            setSelectedQuantity(null)
+            if (change) change(null)
+            return
         }
 
-        if (change) change(selected ? id : null)
+        startQuantityDialog()
+    }
+
+    const startQuantityDialog = () => {
+        if (!quantity) {
+            console.log('START EXTRAS FLOW')
+
+            startExtrasFlow()
+            return
+        }
+
+        setShowQuantityDialog(true)
+    }
+
+    const startExtrasFlow = () => {
+        const extrasServices = services.filter((s) => s.options)
+
+        if (extrasServices.length > 0) {
+            setDialogQueue(extrasServices)
+            setCurrentExtras(extrasServices[0])
+            setExtrasSelected([])
+        } else {
+            addToCart()
+        }
+
+        if (change) change(id)
     }
 
     const addToCart = () => {
@@ -65,8 +94,14 @@ const BundleCard = ({
             price,
             category,
             categoryId,
+            quantity: selectedQuantity ?? -1,
             extras: extrasSelected.length > 0 ? extrasSelected : undefined,
         })
+    }
+
+    const handleQuantityConfirm = (qty: number) => {
+        setSelectedQuantity(qty)
+        setShowQuantityDialog(false)
     }
 
     const handleDialogClose = (service?: ServiceType, selected?: number) => {
@@ -76,8 +111,7 @@ const BundleCard = ({
                     ? service.options[selected].substring(0, 45) + '...'
                     : service.options[selected]
 
-            const newExtrasSelected = [...extrasSelected, optionSelected]
-            setExtrasSelected(newExtrasSelected)
+            setExtrasSelected((prev) => [...prev, optionSelected])
         }
 
         if (dialogQueue.length === 1) {
@@ -92,6 +126,12 @@ const BundleCard = ({
     }
 
     useEffect(() => {
+        if (selectedQuantity !== null) {
+            startExtrasFlow()
+        }
+    }, [selectedQuantity])
+
+    useEffect(() => {
         if (
             dialogQueue.length === 0 &&
             currentExtras === null &&
@@ -104,22 +144,26 @@ const BundleCard = ({
     return (
         <Card id={id}>
             <span className="badge badge-warning">{category}</span>
+
             <Title
                 size="2xl"
                 text={title}
                 subtitle={subtitle}
                 className="my-3"
             />
-            <section>
-                {price && (
-                    <p className="text-4xl font-semibold">
-                        {currency.format(price)}{' '}
-                        <span className="text-2xl text-base-content/50">
-                            MXN
-                        </span>
-                    </p>
-                )}
-            </section>
+
+            {price && (
+                <p className="text-4xl font-semibold max-h-fit">
+                    {currency.format(price)}
+                    <span className="text-2xl text-base-content/50"> MXN</span>
+                </p>
+            )}
+
+            {selectedQuantity && quantity && (
+                <p className="mt-2 text-sm opacity-70">
+                    Incluye {selectedQuantity} {quantity.unit}
+                </p>
+            )}
 
             <SelectButton
                 onSelect={onSelectItem}
@@ -127,15 +171,16 @@ const BundleCard = ({
                 disabled={disabled}
             />
 
-            <ul className="list">
+            <ul className="list mb-auto pt-4">
                 {services.map((service, index) => (
                     <li key={index} className="list-row p-2">
                         <CheckCircleIcon className="size-6 me-2 inline-block text-success" />
                         <div>
-                            <p>{service.name}</p>
+                            <p>{service.name} Cambio</p>
                             {service.options && (
                                 <div className="text-xs font-semibold opacity-60">
-                                    {`${service.options.length} opciones disponibles`}
+                                    {service.options.length} opciones
+                                    disponibles
                                 </div>
                             )}
                         </div>
@@ -146,10 +191,22 @@ const BundleCard = ({
                 ))}
             </ul>
 
+            {/* Extras */}
             {currentExtras && (
                 <ExtrasDialog
                     service={currentExtras}
                     onClose={handleDialogClose}
+                />
+            )}
+
+            {/* Quantity */}
+            {quantity && (
+                <SelectQuantity
+                    unit={quantity.unit}
+                    max={quantity.max}
+                    open={showQuantityDialog}
+                    onClose={() => setShowQuantityDialog(false)}
+                    onConfirm={handleQuantityConfirm}
                 />
             )}
         </Card>
