@@ -96,5 +96,11 @@
             "Pantalla LED adicional de 3×2 metros",
             "Pista iluminada de 20 módulos (4.88 x 6.10 metros)"
         ]
+    },
+    {
+        "id": "S012",
+        "name": "Servicio personalizado para eventos",
+        "category": "SOUNDILUM",
+        "bundles": ["P5"]
     }
 ]

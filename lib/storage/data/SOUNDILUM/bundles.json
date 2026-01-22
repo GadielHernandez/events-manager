@@ -22,5 +22,11 @@
         "name": "Paquete 3",
         "description": "Show Party + servicio extra + servicio premium",
         "price": 40800.0
+    },
+    {
+        "id": "P5",
+        "name": "Paquete Graduacion",
+        "description": "Paquete personalizado",
+        "price": 50000.0
     }
 ]

@@ -176,7 +176,7 @@ const BundleCard = ({
                     <li key={index} className="list-row p-2">
                         <CheckCircleIcon className="size-6 me-2 inline-block text-success" />
                         <div>
-                            <p>{service.name} Cambio</p>
+                            <p>{service.name}</p>
                             {service.options && (
                                 <div className="text-xs font-semibold opacity-60">
                                     {service.options.length} opciones
