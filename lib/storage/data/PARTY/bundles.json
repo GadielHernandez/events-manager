@@ -3,13 +3,21 @@
         "id": "P01",
         "name": "Cabezones",
         "description": "",
-        "price": 2400.0
+        "price": 2400.0,
+        "quantity": {
+            "max": 99,
+            "unit": "botargas"
+        }
     },
     {
         "id": "P02",
         "name": "Robot Led Man",
         "description": "",
-        "price": 3000.0
+        "price": 3000.0,
+        "quantity": {
+            "max": 99,
+            "unit": "robots"
+        }
     },
     {
         "id": "P03",

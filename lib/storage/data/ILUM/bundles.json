@@ -9,6 +9,10 @@
         "id": "ILUM2",
         "name": "Letras Iluminadas",
         "description": "Escribe lo que sea, pueden iluminarse en múltiples colores o en un solo tono. (1.20 m)",
-        "price": 650.0
+        "price": 650.0,
+        "quantity": {
+            "max": 99,
+            "unit": "letras"
+        }
     }
 ]
