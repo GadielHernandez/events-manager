@@ -23,6 +23,8 @@ export async function POST(req: NextRequest) {
         PlaceName,
         bundles,
         CodeDiscount,
+        customDiscount,
+        customAdvance,
     } = await req.json()
 
     const findBundles = bundles.map((bundle: CartItem) =>
@@ -34,6 +36,23 @@ export async function POST(req: NextRequest) {
         }))
     )
     const serverBundles = await Promise.all(findBundles)
+
+    // Calculate total for validation
+    const total = serverBundles.reduce((sum, bundle) => {
+        const quantity = bundle.quantitySelected > 0 ? bundle.quantitySelected : 1
+        return sum + bundle.price * quantity
+    }, 0)
+
+    // Server-side validation of overrides
+    const validatedCustomDiscount =
+        typeof customDiscount === 'number' && customDiscount >= 0
+            ? Math.min(customDiscount, total) // Cap at total
+            : undefined
+
+    const validatedCustomAdvance =
+        typeof customAdvance === 'number' && customAdvance >= 0
+            ? customAdvance
+            : undefined
 
     await GoogleDrive.setFolder()
     await GoogleDrive.setCounter()
@@ -68,6 +87,8 @@ export async function POST(req: NextRequest) {
         PlaceName,
         bundles: serverBundles,
         CodeDiscount,
+        customDiscount: validatedCustomDiscount,
+        customAdvance: validatedCustomAdvance,
     }
 
     const [precontract, contract] = await Promise.all([

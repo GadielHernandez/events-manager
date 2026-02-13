@@ -9,12 +9,19 @@ import Header from '../Common/Header'
 import Button from '../Common/Button'
 import Link from 'next/link'
 import ErrorDialog from './ErrorDialog'
+import AdminSettingsButton from './AdminSettingsButton'
+import { AdminProvider } from '@/contexts/AdminContext'
 
 const CheckoutPage = () => {
     const idConfirmDialog = 'confirm-dialog'
     const idErrorDialog = 'error-dialog'
     return (
-        <>
+        <AdminProvider>
+            {/* Admin button positioned outside Header */}
+            <div className="fixed top-4 right-4 z-50">
+                <AdminSettingsButton />
+            </div>
+
             <Header className="flex min-h-48 bg-primary text-white">
                 <header className="m-auto">
                     <Title
@@ -46,7 +53,7 @@ const CheckoutPage = () => {
                     </section>
                 </div>
             </Container>
-        </>
+        </AdminProvider>
     )
 }
 

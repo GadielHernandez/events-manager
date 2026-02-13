@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import Checkout from '@/lib/api/Checkout'
 import Button from '../Common/Button'
+import { useAdmin } from '@/contexts/AdminContext'
 
 type AcceptButtonProps = {
     confirmDialog: string
@@ -10,6 +11,8 @@ type AcceptButtonProps = {
 
 const AcceptButton = ({ confirmDialog, errorDialog }: AcceptButtonProps) => {
     const [loading, setLoading] = useState(false)
+    const { settings, clearSettings } = useAdmin()
+
     const onClick = async () => {
         setLoading(true)
         const form = document.getElementById('event-data')
@@ -53,6 +56,8 @@ const AcceptButton = ({ confirmDialog, errorDialog }: AcceptButtonProps) => {
             ...formData,
             EventDateTime: eventDateTime.toISOString(),
             CodeDiscount: codeDiscount || '',
+            customDiscount: settings.customDiscount,
+            customAdvance: settings.customAdvance,
         })
 
         if (response?.error) {
@@ -63,6 +68,9 @@ const AcceptButton = ({ confirmDialog, errorDialog }: AcceptButtonProps) => {
             setLoading(false)
             return
         }
+
+        // Clear admin settings on successful checkout
+        clearSettings()
 
         const dialog = document?.getElementById(
             confirmDialog
