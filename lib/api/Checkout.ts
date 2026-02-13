@@ -1,7 +1,7 @@
 import Cart from '../storage/Cart'
 
 class Calendar {
-    async createPrecontact(data: Record<string, string>) {
+    async createPrecontact(data: Record<string, any>) {
         const bundles = Cart.getItems()
 
         try {
