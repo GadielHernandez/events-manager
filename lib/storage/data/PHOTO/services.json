@@ -1,0 +1,79 @@
+[
+    {
+        "id": "FV001",
+        "name": "Cobertura de salida de casa, misa y recepción.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV1", "FV2"]
+    },
+    {
+        "id": "FV002",
+        "name": "Fotografías digitales ilimitadas.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV1", "FV2"]
+    },
+    {
+        "id": "FV003",
+        "name": "100 impresiones en tamaño 4x6”",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV1", "FV2"]
+    },
+    {
+        "id": "FV004",
+        "name": "Vídeo en alta definición.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV1", "FV2"]
+    },
+    {
+        "id": "FV005",
+        "name": "Best moments: un emotivo resumen de 3 minutos con los mejores momentos de tu evento.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV1", "FV2"]
+    },
+    {
+        "id": "FV006",
+        "name": "Videoclip y fotoclip profesional.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV1", "FV2"]
+    },
+    {
+        "id": "FV007",
+        "name": "Cobertura a una camara.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV1"]
+    },
+    {
+        "id": "FV008",
+        "name": "Cobertura a dos camaras.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV2"]
+    },
+    {
+        "id": "FV009",
+        "name": "Se realiza 2 meses antes del evento.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV3"]
+    },
+    {
+        "id": "FV010",
+        "name": "1 ampliación 16x20” texturizada con marco incluido.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV3"]
+    },
+    {
+        "id": "FV011",
+        "name": "2 ampliaciones 8x10” texturizadas con marco incluído.",
+        "details": "",
+        "category": "PHOTOVIDEO",
+        "bundles": ["FV3"]
+    }
+]

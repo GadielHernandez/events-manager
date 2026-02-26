@@ -13,6 +13,12 @@
             "description": "Chisperos, burbujas, lluvia metálica y más para un momento inolvidable."
         },
         {
+            "id": "PHOTO",
+            "name": "Fotografía y video",
+            "img": "PHOTO.webp",
+            "description": "Hacemos que tus recuerdos duren para siempre con fotos y videos profesionales."
+        },
+        {
             "id": "CARPET",
             "name": "Mi alfombra roja",
             "img": "CARPET.webp",

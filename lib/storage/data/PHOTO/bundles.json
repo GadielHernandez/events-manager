@@ -1,0 +1,20 @@
+[
+    {
+        "id": "FV1",
+        "name": "Foto y video (1 cámara)",
+        "description": "Cobertura profesional a una cámara.",
+        "price": 23500.0
+    },
+    {
+        "id": "FV2",
+        "name": "Foto y video (2 cámaras)",
+        "description": "Cobertura profesional a dos cámaras.",
+        "price": 29600.0
+    },
+    {
+        "id": "FV3",
+        "name": "Sesión de fotos",
+        "description": "Sesión de fotos formal e informal",
+        "price": 14000.0
+    }
+]
