@@ -5,6 +5,8 @@ import { addImageLinkToEvent, createEvent } from '@/services/google/calendar'
 import { NextRequest, NextResponse } from 'next/server'
 import GoogleDrive from '@/services/google/drive'
 import { sendPreContractMail } from '@/services/email'
+import { generateContractToken } from '@/services/contracts/token'
+import { sendContractNotification } from '@/services/whatsapp'
 
 const FILE_NAME_PREFIX_CONTRACT = process.env.FILE_NAME_PREFIX_CONTRACT
 const FILE_NAME_PREFIX_PRECONTRACT = process.env.FILE_NAME_PREFIX_PRECONTRACT
@@ -39,7 +41,8 @@ export async function POST(req: NextRequest) {
 
     // Calculate total for validation
     const total = serverBundles.reduce((sum, bundle) => {
-        const quantity = bundle.quantitySelected > 0 ? bundle.quantitySelected : 1
+        const quantity =
+            bundle.quantitySelected > 0 ? bundle.quantitySelected : 1
         return sum + bundle.price * quantity
     }, 0)
 
@@ -113,6 +116,18 @@ export async function POST(req: NextRequest) {
         ),
     ])
 
+    let contractToken: string | undefined
+    if (contractSave.id) {
+        contractToken = await generateContractToken(
+            contractSave.id,
+            contractFolio
+        )
+    } else {
+        console.warn(
+            '[Checkout] contractSave.id is missing — skipping WhatsApp notification'
+        )
+    }
+
     const updated = await addImageLinkToEvent(
         event.id || '',
         precontractSave.webViewLink || '',
@@ -123,5 +138,19 @@ export async function POST(req: NextRequest) {
         to: ClientEmail,
         contract: precontract,
     })
+
+    if (contractToken) {
+        try {
+            await sendContractNotification({
+                phone: ClientMobile,
+                clientName: ClientName,
+                contractToken,
+                folio: contractFolio,
+            })
+        } catch (err) {
+            console.error('[WhatsApp] Error al enviar notificación:', err)
+        }
+    }
+
     return NextResponse.json(updated)
 }

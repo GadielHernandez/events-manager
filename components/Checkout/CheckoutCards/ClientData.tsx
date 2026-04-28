@@ -34,6 +34,7 @@ const ClientData = () => {
                 <InputField
                     legend="Celular/Whatsapp"
                     name="ClientMobile"
+                    prepend="+52"
                     required={true}
                 />
             </FormElement>
