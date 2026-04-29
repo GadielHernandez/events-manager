@@ -13,7 +13,10 @@ export async function GET(
     const payload = await verifyContractToken(token)
 
     if (!payload) {
-        return NextResponse.json({ error: 'Link inválido o expirado' }, { status: 401 })
+        return NextResponse.json(
+            { error: 'Link inválido o expirado' },
+            { status: 401 }
+        )
     }
 
     const drive = google.drive({ version: 'v3', auth: GoogleClient.auth })
@@ -26,7 +29,7 @@ export async function GET(
     return new NextResponse(file.data as ArrayBuffer, {
         headers: {
             'Content-Type': 'image/jpeg',
-            'Content-Disposition': `inline; filename="contrato-${payload.folio}.jpg"`,
+            'Content-Disposition': `inline; filename="precontrato-${payload.folio}.jpg"`,
             'Cache-Control': 'private, max-age=3600',
         },
     })

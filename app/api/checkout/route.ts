@@ -117,9 +117,9 @@ export async function POST(req: NextRequest) {
     ])
 
     let contractToken: string | undefined
-    if (contractSave.id) {
+    if (precontractSave.id) {
         contractToken = await generateContractToken(
-            contractSave.id,
+            precontractSave.id,
             contractFolio
         )
     } else {
