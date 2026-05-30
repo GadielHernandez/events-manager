@@ -58,6 +58,7 @@ const AcceptButton = ({ confirmDialog, errorDialog }: AcceptButtonProps) => {
             CodeDiscount: codeDiscount || '',
             customDiscount: settings.customDiscount,
             customAdvance: settings.customAdvance,
+            customExtra: settings.customExtra,
         })
 
         if (response?.error) {

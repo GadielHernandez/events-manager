@@ -4,6 +4,7 @@ import { createContext, useContext, useState, useEffect } from 'react'
 type AdminSettings = {
     customDiscount?: number
     customAdvance?: number
+    customExtra?: number
 }
 
 type AdminContextType = {

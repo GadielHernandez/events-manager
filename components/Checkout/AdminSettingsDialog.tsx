@@ -13,6 +13,7 @@ const AdminSettingsDialog = ({ id }: AdminSettingsDialogProps) => {
     const { settings, setSettings } = useAdmin()
     const [customDiscount, setCustomDiscount] = useState('')
     const [customAdvance, setCustomAdvance] = useState('')
+    const [customExtra, setCustomExtra] = useState('')
     const [error, setError] = useState('')
     const [cartTotal, setCartTotal] = useState(0)
 
@@ -33,6 +34,9 @@ const AdminSettingsDialog = ({ id }: AdminSettingsDialogProps) => {
         if (settings.customAdvance !== undefined) {
             setCustomAdvance(settings.customAdvance.toString())
         }
+        if (settings.customExtra !== undefined) {
+            setCustomExtra(settings.customExtra.toString())
+        }
     }, [settings])
 
     const handleApply = () => {
@@ -40,6 +44,7 @@ const AdminSettingsDialog = ({ id }: AdminSettingsDialogProps) => {
 
         const discount = customDiscount ? parseFloat(customDiscount) : undefined
         const advance = customAdvance ? parseFloat(customAdvance) : undefined
+        const extra = customExtra ? parseFloat(customExtra) : undefined
 
         // Validation
         if (discount !== undefined) {
@@ -60,9 +65,17 @@ const AdminSettingsDialog = ({ id }: AdminSettingsDialogProps) => {
             }
         }
 
+        if (extra !== undefined) {
+            if (isNaN(extra) || extra < 0) {
+                setError('El cargo extra debe ser un número positivo')
+                return
+            }
+        }
+
         setSettings({
             customDiscount: discount,
             customAdvance: advance,
+            customExtra: extra,
         })
 
         const dialog = document?.getElementById(id) as HTMLDialogElement
@@ -81,6 +94,11 @@ const AdminSettingsDialog = ({ id }: AdminSettingsDialogProps) => {
             setCustomAdvance(settings.customAdvance.toString())
         } else {
             setCustomAdvance('')
+        }
+        if (settings.customExtra !== undefined) {
+            setCustomExtra(settings.customExtra.toString())
+        } else {
+            setCustomExtra('')
         }
     }
 
@@ -144,6 +162,28 @@ const AdminSettingsDialog = ({ id }: AdminSettingsDialogProps) => {
                         <label className="label">
                             <span className="label-text-alt text-base-content/60">
                                 Dejar vacío para cálculo automático
+                            </span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label className="label">
+                            <span className="label-text">
+                                Cargo extra (MXN)
+                            </span>
+                        </label>
+                        <input
+                            type="number"
+                            placeholder="Opcional"
+                            className="input input-bordered w-full"
+                            value={customExtra}
+                            onChange={(e) => setCustomExtra(e.target.value)}
+                            min="0"
+                            step="0.01"
+                        />
+                        <label className="label">
+                            <span className="label-text-alt text-base-content/60">
+                                Dejar vacío para no aplicar cargo extra
                             </span>
                         </label>
                     </div>

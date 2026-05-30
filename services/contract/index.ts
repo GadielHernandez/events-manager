@@ -29,6 +29,7 @@ type CreateEventParams = {
     CodeDiscount: string
     customDiscount?: number
     customAdvance?: number
+    customExtra?: number
 }
 
 const currency = Intl.NumberFormat('es-MX', {
@@ -40,11 +41,13 @@ const calculateFinalTotals = (
     total: number,
     CodeDiscount: string,
     customDiscount?: number,
-    customAdvance?: number
+    customAdvance?: number,
+    customExtra?: number
 ) => {
     // Use custom discount if provided, otherwise use code discount
     const discount = customDiscount ?? checkDiscount(CodeDiscount)
-    let finalTotal = total - discount
+    const extra = customExtra ?? 0
+    let finalTotal = total - discount + extra
 
     // Use custom advance if provided, otherwise calculate automatically
     let advance = customAdvance ?? (
@@ -80,6 +83,7 @@ export async function generateContractImage(params: CreateEventParams) {
         CodeDiscount,
         customDiscount,
         customAdvance,
+        customExtra,
     } = params
 
     const width = 1125
@@ -184,7 +188,7 @@ export async function generateContractImage(params: CreateEventParams) {
 
     ctx.fillText(`${PlaceName}, ${PlaceAddress}`, 347, 881) // Ubicacion
 
-    const totals = calculateFinalTotals(total, CodeDiscount, customDiscount, customAdvance)
+    const totals = calculateFinalTotals(total, CodeDiscount, customDiscount, customAdvance, customExtra)
 
     ctx.fillText(currency.format(totals.total), 867, 1075) // Total
     ctx.fillText(currency.format(totals.advance), 867, 1133) // Anticipo

@@ -49,24 +49,25 @@ const ListSelected = () => {
     // Recalculate when admin settings change
     useEffect(() => {
         const itemsTotal = calculateTotal()
+        const extra = settings.customExtra ?? 0
 
         if (settings.customDiscount !== undefined) {
             // Apply custom discount
             setDiscountAmount(settings.customDiscount)
-            setTotal(itemsTotal - settings.customDiscount)
+            setTotal(itemsTotal - settings.customDiscount + extra)
         } else {
             // Reset to original total or code discount
             if (codeDiscount && discountAmount > 0) {
                 // Keep code discount if it was applied
-                setTotal(itemsTotal - discountAmount)
+                setTotal(itemsTotal - discountAmount + extra)
             } else {
                 // Reset to original total
                 setDiscountAmount(0)
-                setTotal(itemsTotal)
+                setTotal(itemsTotal + extra)
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [settings.customDiscount])
+    }, [settings.customDiscount, settings.customExtra])
 
     return (
         <Card>
@@ -129,6 +130,19 @@ const ListSelected = () => {
                         </article>
                         <aside className="font-medium text-info">
                             {currency.format(settings.customAdvance)}
+                        </aside>
+                    </li>
+                )}
+
+                {settings.customExtra !== undefined && settings.customExtra > 0 && (
+                    <li className="list-row">
+                        <article className="list-col-grow">
+                            <header className="text-sm">
+                                Cargo extra (Admin)
+                            </header>
+                        </article>
+                        <aside className="font-medium text-warning">
+                            +{currency.format(settings.customExtra)}
                         </aside>
                     </li>
                 )}

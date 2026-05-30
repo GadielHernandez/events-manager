@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
         CodeDiscount,
         customDiscount,
         customAdvance,
+        customExtra,
     } = await req.json()
 
     const findBundles = bundles.map((bundle: CartItem) =>
@@ -55,6 +56,11 @@ export async function POST(req: NextRequest) {
     const validatedCustomAdvance =
         typeof customAdvance === 'number' && customAdvance >= 0
             ? customAdvance
+            : undefined
+
+    const validatedCustomExtra =
+        typeof customExtra === 'number' && customExtra >= 0
+            ? customExtra
             : undefined
 
     await GoogleDrive.setFolder()
@@ -92,6 +98,7 @@ export async function POST(req: NextRequest) {
         CodeDiscount,
         customDiscount: validatedCustomDiscount,
         customAdvance: validatedCustomAdvance,
+        customExtra: validatedCustomExtra,
     }
 
     const [precontract, contract] = await Promise.all([
@@ -133,7 +140,6 @@ export async function POST(req: NextRequest) {
         precontractSave.webViewLink || '',
         contractSave.webViewLink || ''
     )
-
     await sendPreContractMail({
         to: ClientEmail,
         contract: precontract,
