@@ -2,6 +2,7 @@ import React from 'react'
 import BaseCard from './BaseCard'
 import InputField from '@/components/Common/DataInput/InputField'
 import SelectInput from '@/components/Common/DataInput/SelectInput'
+import TimeSelect from '@/components/Common/DataInput/TimeSelect'
 import FormElement from '@/components/Common/Form/FormElement'
 import { EVENT_TYPES } from '@/lib/types'
 
@@ -37,9 +38,8 @@ const EventData = () => {
                     name="EventDate"
                     required={true}
                 />
-                <InputField
-                    legend="Horario "
-                    type="time"
+                <TimeSelect
+                    legend="Horario"
                     name="EventTime"
                     required={true}
                 />

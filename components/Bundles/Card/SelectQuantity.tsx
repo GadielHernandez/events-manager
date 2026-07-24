@@ -37,24 +37,19 @@ const SelectQuantity = ({
                 </p>
 
                 <div className="mt-6">
-                    <input
-                        type="number"
-                        min={1}
-                        max={max}
+                    <select
                         value={quantity}
-                        onChange={(e) =>
-                            setQuantity(
-                                Math.min(
-                                    max,
-                                    Math.max(1, Number(e.target.value))
-                                )
+                        onChange={(e) => setQuantity(Number(e.target.value))}
+                        className="select select-bordered w-full"
+                    >
+                        {Array.from({ length: max }, (_, i) => i + 1).map(
+                            (n) => (
+                                <option key={n} value={n}>
+                                    {n} {unit}
+                                </option>
                             )
-                        }
-                        className="input input-bordered w-full"
-                    />
-                    <p className="text-xs opacity-60 mt-1">
-                        Máximo permitido: {max} {unit}
-                    </p>
+                        )}
+                    </select>
                 </div>
 
                 <div className="modal-action">
