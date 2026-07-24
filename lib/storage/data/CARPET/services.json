@@ -54,5 +54,26 @@
         "details": "",
         "category": "CARPET",
         "bundles": ["C4", "C5"]
+    },
+    {
+        "id": "C009",
+        "name": "2 banners LED para una experiencia visual más impactante",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["C6"]
+    },
+    {
+        "id": "C010",
+        "name": "Pantalla LED como fondo visual totalmente personalizado.",
+        "details": "",
+        "category": "CARPET",
+        "bundles": ["C7"]
+    },
+    {
+        "id": "C011",
+        "name": "Edición de fotos y/o videos para crear una experiencia única y de alto impacto.",
+        "details": "El servicio de edición ya está incluido en el precio.",
+        "category": "CARPET",
+        "bundles": ["C6", "C7"]
     }
 ]

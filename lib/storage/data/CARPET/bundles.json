@@ -3,31 +3,42 @@
         "id": "C1",
         "name": "Paquete de fotografias digitales",
         "description": "Una experiencia unica digna de Hollywood",
-        "price": 5000.0
+        "price": 6500.0
     },
     {
         "id": "C2",
         "name": "Paquete de entrevista a invitados",
         "description": "Una experiencia unica digna de Hollywood",
-        "price": 8500.0
+        "price": 9500.0
     },
     {
         "id": "C4",
         "name": "Paquete de entrevista a invitados con Alex Merla",
         "description": "Con entrevista de Alex Merla a tus invitados",
-        "price": 10500.0
+        "price": 12500.0
     },
     {
         "id": "C3",
         "name": "Paquete de entrevista a invitados + backstage",
         "description": "Una experiencia unica digna de Hollywood",
-        "price": 12500.0
+        "price": 13500.0
     },
-
     {
         "id": "C5",
         "name": "Paquete de entrevista a invitados + backstage con Alex Merla",
         "description": "Con entrevista de Alex Merla a tus invitados",
-        "price": 14500.0
+        "price": 16500.0
+    },
+    {
+        "id": "C6",
+        "name": "Personaliza con 2 Banners LED",
+        "description": "Añade 2 Banners LED a tu paquete de alfombra roja",
+        "price": 7500.0
+    },
+    {
+        "id": "C7",
+        "name": "Personaliza con una Pantalla LED",
+        "description": "Sustituye el banner gigante por una Pantalla LED en tu paquete de alfombra roja",
+        "price": 8500.0
     }
 ]
