@@ -18,5 +18,10 @@
             "max": 99,
             "unit": "banners"
         }
+    },
+    {
+        "id": "LED3",
+        "name": "Circuito cerrado",
+        "price": 5000.0
     }
 ]

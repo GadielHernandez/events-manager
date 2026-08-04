@@ -12,5 +12,12 @@
         "details": "Banner LED",
         "category": "LED",
         "bundles": ["LED2"]
+    },
+    {
+        "id": "LED03",
+        "name": "Circuito cerrado",
+        "details": "Circuito cerrado",
+        "category": "LED",
+        "bundles": ["LED3"]
     }
 ]
